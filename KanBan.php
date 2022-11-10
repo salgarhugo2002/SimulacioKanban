@@ -8,7 +8,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h1></h1>
+    
 </body>
 </html>
 
@@ -23,7 +23,6 @@
         "Done" => array('b')
     );
 
-    foreach ($list as $key => $value) {
-        echo $key . "<br>";
-    }
+
+
 ?>
