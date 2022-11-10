@@ -15,7 +15,7 @@
 
 <?php
     $list = array(
-        "Backlog" => array(),
+        "Backlog" => array(), //pene
         "To Do" => array(),
         "Doing" => array(),
         "Done" => array()
