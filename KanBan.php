@@ -17,10 +17,10 @@
 
 //hola
     $list = array(
-        "Backlog" => array(), //pene
-        "To Do" => array(),
-        "Doing" => array(),
-        "Done" => array()
+        "Backlog" => array('a'), //pene
+        "To Do" => array('a','a'),
+        "Doing" => array('a'),
+        "Done" => array('b')
     );
 
     foreach ($list as $key => $value) {
