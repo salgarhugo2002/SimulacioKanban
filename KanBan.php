@@ -23,6 +23,9 @@
         "Done" => array()
         
     );
+    foreach ($list as $key => $value) {
+        echo "$key <br>";
+    }
 
 
 
