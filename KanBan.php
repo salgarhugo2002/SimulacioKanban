@@ -8,7 +8,7 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <h1></h1>
 </body>
 </html>
 
@@ -22,4 +22,8 @@
         "Doing" => array(),
         "Done" => array()
     );
+
+    foreach ($list as $key => $value) {
+        echo $key . "<br>";
+    }
 ?>
