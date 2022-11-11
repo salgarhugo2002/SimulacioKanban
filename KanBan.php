@@ -16,7 +16,7 @@
 
 <?php
 
-//hola
+//holaaaaaa
     $list = array(
         "Backlog" => array(), //pene
         "ToDo" => array("llista to do", "css maca"," nomes mostrar la llista"," com posar nou item ", "com eliminar nou item"),
