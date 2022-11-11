@@ -18,16 +18,17 @@
 
 //holaaaaaa
     $list = array(
-        "Backlog" => array(), //pene
+        "Backlog" => array("a","b","c","d"), //pene
         "ToDo" => array("llista to do", "css maca"," nomes mostrar la llista"," com posar nou item ", "com eliminar nou item"),
-        "Doing" => array(),
-        "Done" => array()
-        
-    );
-    $cont = 0;
-    $cont2 = 0;
+        "Doing" => array("a","b","c","d"),
+        "Done" => array("a","b","c","d")
+        );
+    
+    
+    
     foreach ($list as $key => $value) {
-        $cont++;
+        $cont2 = 0;
+        
         echo " <h3>$key</h3> <div id='$key'>";
         foreach ($value as $k) {
             $cont2++;
