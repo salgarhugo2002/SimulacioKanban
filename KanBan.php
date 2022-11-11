@@ -8,7 +8,6 @@
     <title>KanBan</title>
 </head>
 <body>
-    <div id="Todo">
 
 </body>
 </html>
