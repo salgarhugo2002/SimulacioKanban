@@ -1,3 +1,1 @@
-<script>
-    
-</script>
+document.getElementById("text1").value;
