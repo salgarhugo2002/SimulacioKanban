@@ -1,0 +1,22 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+#caca{
+    width: 300px;
+}
+.cont{
+    display: flex;
+    justify-content: center;
+    
+
+    background-image: url(./img/todo.jpg);
+    background-size: 572px;
+}
+
+  body{
+    background-image: url(./img/fondo.png);
+    background-size: cover;
+  }
