@@ -1,15 +1,15 @@
 
-var backlog = [];
+var todo = [];
 
 function guardar() {
-  backlog.push(document.getElementById("text1").value);  
+  todo.push(document.getElementById("text1").value);  
     
     }
 
 function mostrar(){
     var node = document.createElement('li');
 
-    backlog.forEach(element => {
+    todo.forEach(element => {
         node = document.createElement('li');
         node.appendChild(document.createTextNode(element));
 
