@@ -1,18 +1,25 @@
-
-var backlog = [];
+var todo = [];
 
 function guardar() {
-  backlog.push(document.getElementById("text1").value);  
-    
+    try{
+        let dato = document.getElementById("text1").value;
+
+        if(dato == "" || dato == null){throw "No hi ha text que afegir"}
+        else{document.getElementById("text1").value = null; todo.push(dato); mostrar();}
+        
+    }catch(err){
+        alert(err);
     }
+
+}
 
 function mostrar(){
     var node = document.createElement('li');
 
-    backlog.forEach(element => {
+    todo.forEach(element => {
         node = document.createElement('li');
         node.appendChild(document.createTextNode(element));
 
-       });
-       document.querySelector('ol').appendChild(node);
+    });
+    document.querySelector('ol').appendChild(node);
 }
