@@ -7,17 +7,6 @@ function guardar() {
     mostrar2();
     }
 
-
-          
-function mostrar() {
-    document.getElementById("textbacklog").innerHTML = "<ol type='I'>";
-   backlog.forEach(element => {
-    document.getElementById("textbacklog").innerHTML += "<li> " + element + "</li>";
-   });
-   document.getElementById("textbacklog").innerHTML += "</ol>";
-}
-
-
 function mostrar2(){
     var node = document.createElement('li');
 
