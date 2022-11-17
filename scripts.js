@@ -20,10 +20,11 @@ function mostrar() {
 
 function mostrar2(){
     var node = document.createElement('li');
+
     backlog.forEach(element => {
+        node = document.createElement('li');
         node.appendChild(document.createTextNode(element));
+
        });
        document.querySelector('ol').appendChild(node);
-
-
 }
