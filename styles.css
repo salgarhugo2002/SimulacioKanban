@@ -1,32 +1,29 @@
 #huevos{
-    width: 88%;
-    height: 900px;
-    /* border: 10px solid red; */
-    margin: 6%;
-    margin-top: 15px;
-    background-image: url(./img/pizzarra.jpg);
-    background-size: cover;
+  width: 88%;
+  height: 900px;
+  /* border: 10px solid red; */
+  margin: 6%;
+  margin-top: 15px;
+  background-image: url(./img/pizzarra.jpg);
+  background-size: cover;
 }
 
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 #caca{
-    width: 300px;
+  width: 300px;
 }
 .cont{
-    display: flex;
-    justify-content: center;
-    
-
-    
-    background-size: 572px;
+  display: flex;
+  justify-content: center;
+  background-size: 572px;
 }
 
-  body{
-    background-image: url(./img/a.png);
-    background-size: cover;
-  }
+body{
+  background-image: url(./img/a.png);
+  background-size: cover;
+}
