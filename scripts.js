@@ -4,10 +4,9 @@ var backlog = [];
 function guardar() {
   backlog.push(document.getElementById("text1").value);  
     
-    mostrar2();
     }
 
-function mostrar2(){
+function mostrar(){
     var node = document.createElement('li');
 
     backlog.forEach(element => {
