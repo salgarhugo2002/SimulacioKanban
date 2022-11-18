@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,38 +7,27 @@
     <link rel="stylesheet" href="./styles.css">
     <title>Document</title>
 </head>
-
 <body>
-
-    <div class='container'>
-        <h2>Inserta els elemnts:</h2>
-    </div>
-
-    <div class='container'>
-        <input type="text" id="text1">
-    </div>
     
-    <br>
-    
-    <div class="container">
-    <br>
-        <button onclick="guardar()">Guardar</button>
-        <button onclick="eliminarToDo()">Eliminar</button>
-    </div>
-
-    <div id="DivPizarra">
-        <div id="DivToDo"> 
-            <div class="cont">
-                <p style="font-size: 50px;">ToDo</p>
-            </div>
-
-        <div class="cont">
-            
+    <div class="contenedor">
+        
+        <div>ToDo</div>
+        <div>Doing</div>
+        <div>Done!</div>
+        
+        <div id="item1">
             <ol id="listaToDo"></ol>
         </div>
+        <div id="item2">3</div>
+        <div id="item3">4</div>
+    </div>
+
+    <div id="inputs">
+        <input type="text"  id="text1">
+        <button onclick="guardar()" class="btn">Enviar</button>
+        <button onclick="eliminarToDo()" class="btn">Eliminar</button>
+        <button onclick="guardarlocal()" class="btn">GuardarLocal</button>
     </div>
     <script src="./scripts.js"></script>
 </body>
-
-
 </html>
