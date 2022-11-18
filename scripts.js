@@ -5,15 +5,16 @@ function guardar() {
     try{
         let dato = document.getElementById("text1").value;
         
-        if(dato == "" || dato == null){throw "No hi ha text que afegir"}
+        if(dato == "" || dato == null)
+        {
+            throw "No hi ha text que afegir"
+        }
         else
         {
-            
             //document.getElementById("text1").value = null;
-         
             todo.push(dato); 
-         
-             mostrar();}
+             mostrar();
+        }
         
     }catch(err){
         alert(err);
