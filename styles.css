@@ -1,9 +1,8 @@
-#huevos{
+#DivPizarra{
   width: 88%;
   height: 900px;
-  border: 10px solid red;
   margin: 6%;
-  margin-top: 10px;
+  margin-top: 5px;
   background-image: url(./img/pizzarra.jpg);
   background-size: contain;
   background-position: center;
@@ -19,7 +18,7 @@
 
 
 
-#caca{
+#DivToDo{
   width: 300px;
 }
 .cont{
