@@ -1,31 +1,32 @@
 #huevos{
   width: 88%;
   height: 900px;
+  border: 10px solid red;
   margin: 6%;
-  margin-top: 15px;
+  margin-top: 10px;
   background-image: url(./img/pizzarra.jpg);
-  background-size:contain;
+  background-size: contain;
+  background-position: center;
   background-repeat: no-repeat;
 }
-#huevos img{
-  width:100%;
-  height:auto;
 
-}
-
-.container {
+.container{
   display: flex;
   justify-content: center;
   align-items: center;
+  
 }
+
+
 
 #caca{
   width: 300px;
 }
 .cont{
+  font-size: 200%;
   display: flex;
   justify-content: center;
-  background-size: 572px;
+  margin-top: 15px;
 }
 
 body{
