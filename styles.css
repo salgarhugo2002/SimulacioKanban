@@ -1,11 +1,16 @@
 #huevos{
   width: 88%;
   height: 900px;
-  /* border: 10px solid red; */
   margin: 6%;
   margin-top: 15px;
   background-image: url(./img/pizzarra.jpg);
-  background-size: cover;
+  background-size:contain;
+  background-repeat: no-repeat;
+}
+#huevos img{
+  width:100%;
+  height:auto;
+
 }
 
 .container {
