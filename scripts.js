@@ -15,7 +15,7 @@ function guardar() {
 }
 
 function mostrar(){
-       var node = document.createElement('li');
+    var node = document.createElement('li');
 
     todo.forEach(element => {
         node = document.createElement('li');
