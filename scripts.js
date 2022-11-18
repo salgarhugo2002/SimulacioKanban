@@ -13,7 +13,7 @@ function guardar() {
         {
             //document.getElementById("text1").value = null;
             todo.push(dato); 
-             mostrar();
+             mostrarToDo();
         }
         
     }catch(err){
@@ -40,5 +40,5 @@ document.getElementById('listaToDo').innerHTML = '';
 function eliminarToDo() {
     let num = parseInt(document.getElementById("text1").value -1);
             todo.splice(num,1);
-    mostrar();
+    mostrarToDo();
 }
