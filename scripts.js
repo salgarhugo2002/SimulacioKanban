@@ -21,9 +21,7 @@ function guardar() {
 
 }
 
-
-
-function mostrar(){
+function mostrarToDo(){
 var node;
 
 document.getElementById('listaToDo').innerHTML = '';
@@ -38,10 +36,8 @@ document.getElementById('listaToDo').innerHTML = '';
 }
 
 
-function eliminar() {
+function eliminarToDo() {
     let num = parseInt(document.getElementById("text1").value -1);
             todo.splice(num,1);
-
-            
     mostrar();
 }
