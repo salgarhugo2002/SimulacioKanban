@@ -6,7 +6,14 @@ function guardar() {
         let dato = document.getElementById("text1").value;
         
         if(dato == "" || dato == null){throw "No hi ha text que afegir"}
-        else{document.getElementById("text1").value = null; todo.push(dato); mostrar();}
+        else
+        {
+            
+            //document.getElementById("text1").value = null;
+         
+            todo.push(dato); 
+         
+             mostrar();}
         
     }catch(err){
         alert(err);
@@ -14,13 +21,27 @@ function guardar() {
 
 }
 
+
+
 function mostrar(){
-       var node = document.createElement('li');
+var node;
+
+document.getElementById('listaToDo').innerHTML = '';
 
     todo.forEach(element => {
-        node = document.createElement('li');
+       node = document.createElement('li');
+       
         node.appendChild(document.createTextNode(element));
 
+        document.querySelector('#listaToDo').appendChild(node);
     });
-    document.querySelector('ol').appendChild(node);
+}
+
+
+function eliminar() {
+    let num = parseInt(document.getElementById("text1").value -1);
+            todo.splice(num,1);
+
+            
+    mostrar();
 }
