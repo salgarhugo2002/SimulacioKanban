@@ -4,7 +4,6 @@ var todo = [];
 function guardar() {
     try{
         let dato = document.getElementById("text1").value;
-        
         if(dato == "" || dato == null){throw "No hi ha text que afegir"}
         else{document.getElementById("text1").value = null; todo.push(dato); mostrar();}
         
@@ -32,5 +31,5 @@ document.getElementById('listaToDo').innerHTML = '';
 function eliminarToDo() {
     let num = parseInt(document.getElementById("text1").value -1);
             todo.splice(num,1);
-    mostrar();
+    mostrarToDo();
 }
