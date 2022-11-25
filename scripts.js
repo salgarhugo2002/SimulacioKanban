@@ -1,3 +1,7 @@
+
+var todo = [];
+var codi = [1];
+
 class Task {
 
     constructor(_textp, _codip) {
@@ -36,14 +40,12 @@ class Task {
 
 
 }
-
+carregarlocal();
   function Generarid(){
-      return codi[0] =+ 1;
+    codi[0] = codi[0]+ 1;
       }
 
-var todo = [];
-var codi = [];
-carregarlocal();
+
 
 
 
@@ -56,7 +58,8 @@ function guardarToDo() {
         else {
             document.getElementById("text1").value = null;
             console.log("avans");
-           let tasca = new Task(dato, 6);
+           let tasca = new Task(dato, codi[0]);
+           Generarid();
             console.log("despres");
             todo.push(tasca);
 
@@ -100,7 +103,7 @@ function eliminarToDo() {
 function guardarlocal() {
 
     localStorage.setItem('llista', JSON.stringify(todo));
-    localStorage.setItem('id', JSON.stringify(id));
+    localStorage.setItem('id', JSON.stringify(codi));
 
 }
 
@@ -115,12 +118,12 @@ function carregarlocal() {
                 });
                 
             if (localStorage.id)
-                id = JSON.parse(localStorage.getItem('id'));
+                codi = JSON.parse(localStorage.getItem('id'));
 
             mostrarToDo();
         } else
             localStorage.setItem('llista', JSON.stringify(todo));
-            localStorage.setItem('id', JSON.stringify(id));
+            localStorage.setItem('id', JSON.stringify(codi));
 
     } else {
         alert("Sorry, your browser does not support web storage...");
