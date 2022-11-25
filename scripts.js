@@ -15,7 +15,9 @@ function guardar() {
             console.log(todo);
             todo.push(dato); 
             
-            mostrarToDo();}
+            mostrarToDo();
+            guardarlocal();
+        }
         
     }catch(err){
         alert(err);
@@ -42,6 +44,7 @@ function eliminarToDo() {
     let num = parseInt(document.getElementById("text1").value -1);
             todo.splice(num,1);
     mostrarToDo();
+    guardarlocal();
 }
 
 
@@ -70,3 +73,11 @@ alert("Sorry, your browser does not support web storage...");
 
 
 }
+
+var input = document.getElementById("text1");
+input.addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+      document.getElementById("btng").click();
+    }
+  });
