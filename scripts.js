@@ -6,6 +6,7 @@ class Task {
     constructor(_textp, _codip) {
 
         this._text = _textp;
+    }}
 
 function guardar() {
     try {
