@@ -32,4 +32,23 @@ img{
 
 .grid{
   margin-top: 10px;
+
+
+#inputs{
+  width: 40%;
+  margin: auto;
+  margin-top: 5px;
+  
+}
+
+
+.btns{
+  border-radius: 5px;
+  background-color: #2f89fc;
+  font-size: 20px;
+  width: 120px;
+}
+.btn:hover{
+  background-color: #4CAF50; /* Green */
+  color: white;
 }

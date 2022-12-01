@@ -1,8 +1,11 @@
 var todo = [];
+var codi = [1];
 
-carregarlocal();
+class Task {
 
+    constructor(_textp, _codip) {
 
+        this._text = _textp;
 
 function guardar() {
     try {
@@ -85,8 +88,13 @@ function carregarlocal() {
     if (typeof (Storage) !== "undefined") {
 
         if (localStorage.llista) {
-            todo = JSON.parse(localStorage.getItem('llista'));
-            console.log(todo);
+                var data = [] = JSON.parse(localStorage.getItem('llista'));
+                data.forEach(element => {
+                todo.push(new Task(element._text, element._codi));
+                });
+                
+            if (localStorage.id)
+                codi = JSON.parse(localStorage.getItem('id'));
 
             mostrarToDo();
         }
@@ -97,6 +105,12 @@ function carregarlocal() {
     }
 }
 
+document.getElementById("text1").addEventListener("keypress", function (event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        document.getElementById("btng").click();
+    }
+})
 
 var input = document.getElementById("text1");
 input.addEventListener("keypress", function (event) {
