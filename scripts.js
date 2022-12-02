@@ -115,7 +115,7 @@ var checks = document.querySelectorAll('.hola')
 
 
 function eliminarToDo() {
-    let num = parseInt(document.getElementById("text1").value - 1);
+    let num = parseInt(document.getElementById("textEliminar").value - 1);
     todo.splice(num, 1);
     mostrarToDo();
     guardarlocal();

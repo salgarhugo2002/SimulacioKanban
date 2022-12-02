@@ -91,7 +91,7 @@
                                   <input type="text" class="form-control" id="responsable1">
                               </div>
                               <div class="mb-3">
-                                  <label for="message-text" class="col-form-label">Tasca::</label>
+                                  <label for="message-text" class="col-form-label">Tasca:</label>
                                   <textarea class="form-control" id="text1"></textarea>
                                   <br>
                                   <input type="date" id="PrevFinalitzacio" name="trip-start" value="2022-12-02"
@@ -103,12 +103,35 @@
                           
                           <button type="button" class="btn btn-outline-success" id="btng"
                               onclick="guardarToDo()">Afegir</button>
+                          <!-- Button trigger modal -->
+                          <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                            Eliminar
+                          </button>
                               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
   
                       </div>
                   </div>
               </div>
           </div>
+          
+        <!-- Modal -->
+        <div class="modal fade " id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog modal-sm modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Eliminar tasca</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <input type="text" class="form-control" id="textEliminar"></textarea>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="eliminarToDo()">Guardar</button>
+              </div>
+            </div>
+          </div>
+        </div>
                 <button type="button" class="btn btn-outline-danger" id="btnb"
                     onclick="eliminarToDo()">Eliminar</button>
                 <button type="button" class="btn btn-outline-danger" id="val" onclick="validar_check()">validar</button>
