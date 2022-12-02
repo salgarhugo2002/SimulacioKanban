@@ -1,24 +1,70 @@
+
 var todo = [];
+var codi = [1];
 
+class Task {
+
+    constructor(_textp, _codip) {
+
+        this._text = _textp;
+
+       this._codi = _codip;
+
+          this.data_creacio = new Date();
+        //   this.data_previsio_finalitzacio;
+        //   this.responsable;
+        
+    }
+
+    get codi() {
+        return this.codi;
+    }
+    set codi(codi2) {
+        this.codi = codi2;
+    }
+
+    get Text() {
+        return this.text;
+    }
+    set Text(text) {
+        this.text = text;
+    }
+
+    getTask() {
+        return this;
+    }
+
+    RetornText() {
+        return this._text;
+    }
+
+
+}
 carregarlocal();
+  function Generarid(){
+    codi[0] = codi[0]+ 1;
+      }
 
 
 
-function guardar() {
+
+
+function guardarToDo() {
     try {
         let dato = document.getElementById("text1").value;
         if (dato == "" || dato == null) {
-
-            throw "No hi ha text que afegir"
+            throw "No hi ha text que afegir";
         }
         else {
             document.getElementById("text1").value = null;
-
-            console.log(todo);
-            todo.push(dato);
+            console.log("avans");
+           let tasca = new Task(dato, codi[0]);
+           Generarid();
+            console.log("despres");
+            todo.push(tasca);
 
             mostrarToDo();
-            guardarlocal()
+            guardarlocal();
         }
 
     } catch (err) {
@@ -26,57 +72,38 @@ function guardar() {
     }
 
 }
-var a;
 
 function mostrarToDo() {
+    console.log("mostrartodo")
     var node;
-    
+
     document.getElementById('listaToDo').innerHTML = '';
+    console.log(todo)
 
     todo.forEach(element => {
         node = document.createElement('li');
 
-        a = document.createElement('input');
-        a.type = "checkbox";
-        a.className = "hola"
-        node.appendChild(document.createTextNode(element + " "));
-        node.appendChild(a)
-       
-        document.querySelector('#listaToDo').appendChild(node);
-        
-    });
-    
+        node.appendChild(document.createTextNode(element.RetornText()));
+        console.log(element)
 
-    
+        document.querySelector('#listaToDo').appendChild(node);
+    });
+
 }
-let cont = 0
-var v = document.getElementById('val')
-var checks = document.querySelectorAll('.hola')
-v.addEventListener('click',function(){
-    checks.forEach((e)=>{
-        
-        if (e.checked == true) {
-            console.log("Chequeado")
-           
-        }else{
-            console.log("ningun elemento seleccionado")
-        }
-    })
-})
+
 
 function eliminarToDo() {
     let num = parseInt(document.getElementById("text1").value - 1);
-    
-    
     todo.splice(num, 1);
     mostrarToDo();
-    guardarlocal()
+    guardarlocal();
 }
 
 
 function guardarlocal() {
 
     localStorage.setItem('llista', JSON.stringify(todo));
+    localStorage.setItem('id', JSON.stringify(codi));
 
 }
 
@@ -85,23 +112,33 @@ function carregarlocal() {
     if (typeof (Storage) !== "undefined") {
 
         if (localStorage.llista) {
-            todo = JSON.parse(localStorage.getItem('llista'));
-            console.log(todo);
+                var data = [] = JSON.parse(localStorage.getItem('llista'));
+                data.forEach(element => {
+                todo.push(new Task(element._text, element._codi));
+                });
+                
+            if (localStorage.id)
+                codi = JSON.parse(localStorage.getItem('id'));
 
             mostrarToDo();
-        }
+        } else
+            localStorage.setItem('llista', JSON.stringify(todo));
+            localStorage.setItem('id', JSON.stringify(codi));
+
+    } else {
+        alert("Sorry, your browser does not support web storage...");
+
     }
 
-    else {
-        alert("Sorry, your browser does not support web storage...");
-    }
+
+
 }
 
-
-var input = document.getElementById("text1");
-input.addEventListener("keypress", function (event) {
+document.getElementById("text1").addEventListener("keypress", function (event) {
     if (event.key === "Enter") {
         event.preventDefault();
         document.getElementById("btng").click();
     }
-});
+})
+
+    ;  
