@@ -45,8 +45,6 @@ function Generarid() {
 
 
 
-
-
 function guardarToDo() {
     try {
         let responsable = document.getElementById('resp').value
@@ -59,12 +57,8 @@ function guardarToDo() {
         else {
             document.getElementById("text1").value = null;
 
-
-
             let tasca = new Task(dato, codi[0], data1, data, responsable);
             Generarid();
-
-
 
             todo.push(tasca);
 
