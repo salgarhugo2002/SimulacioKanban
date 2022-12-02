@@ -4,14 +4,14 @@ var codi = [1];
 
 class Task {
 
-    constructor(_textp, _codip,data1,data,responsable) {
-        
+    constructor(_textp, _codip, data1, data, responsable) {
+
         this._text = _textp;
         this._codi = _codip;
         this._data_creacio = data1;
         this._data_previsio_finalitzacio = data;
         this._responsable = responsable;
-        
+
     }
 
     get codi() {
@@ -39,9 +39,9 @@ class Task {
 
 }
 carregarlocal();
-  function Generarid(){
-    codi[0] = codi[0]+ 1;
-      }
+function Generarid() {
+    codi[0] = codi[0] + 1;
+}
 
 
 
@@ -59,15 +59,15 @@ function guardarToDo() {
         else {
             document.getElementById("text1").value = null;
 
-            
-            
-           let tasca = new Task(dato, codi[0],data1,data,responsable);
-           Generarid();
 
 
-            
+            let tasca = new Task(dato, codi[0], data1, data, responsable);
+            Generarid();
+
+
+
             todo.push(tasca);
-            
+
             mostrarToDo();
             guardarlocal();
         }
@@ -80,33 +80,33 @@ function guardarToDo() {
 
 function mostrarToDo() {
     var node;
-    
+
     document.getElementById('listaToDo').innerHTML = '';
 
     todo.forEach(element => {
         node = document.createElement('li');
-        node.draggable= true
+        node.draggable = true
         a = document.createElement('input');
         a.type = "checkbox";
         a.className = "hola"
         node.appendChild(document.createTextNode(element.RetornText() + " "));
         node.appendChild(a)
-       
-        document.querySelector('#listaToDo').appendChild(node);
-        
-    });
-    
-}
-function validar_check(){
-    
-var checks = document.querySelectorAll('.hola')
 
-    checks.forEach((e)=>{
-        
+        document.querySelector('#listaToDo').appendChild(node);
+
+    });
+
+}
+function validar_check() {
+
+    var checks = document.querySelectorAll('.hola')
+
+    checks.forEach((e) => {
+
         if (e.checked == true) {
             console.log("Chequeado")
-           
-        }else{
+
+        } else {
             console.log("ningun elemento seleccionado")
         }
     })
@@ -135,18 +135,18 @@ function carregarlocal() {
     if (typeof (Storage) !== "undefined") {
 
         if (localStorage.llista) {
-                var data = [] = JSON.parse(localStorage.getItem('llista'));
-                data.forEach(element => {
-                todo.push(new Task(element._text, element._codi,element._data_creacio,element._data_previsio_finalitzacio,element._responsable));
-                });
-                
+            var data = [] = JSON.parse(localStorage.getItem('llista'));
+            data.forEach(element => {
+                todo.push(new Task(element._text, element._codi, element._data_creacio, element._data_previsio_finalitzacio, element._responsable));
+            });
+
             if (localStorage.id)
                 codi = JSON.parse(localStorage.getItem('id'));
 
             mostrarToDo();
         } else
             localStorage.setItem('llista', JSON.stringify(todo));
-            localStorage.setItem('id', JSON.stringify(codi));
+        localStorage.setItem('id', JSON.stringify(codi));
 
     } else {
         alert("Sorry, your browser does not support web storage...");
@@ -164,4 +164,3 @@ document.getElementById("text1").addEventListener("keypress", function (event) {
     }
 })
 
-    
