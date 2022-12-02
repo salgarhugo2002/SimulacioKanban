@@ -4,12 +4,12 @@ var codi = [1];
 
 class Task {
 
-    constructor(_textp, _codip,data) {
+    constructor(_textp, _codip,data1,data) {
         
         this._text = _textp;
         this._codi = _codip;
-        this.data_creacio = new Date().toLocaleDateString();
-           this.data_previsio_finalitzacio = data;
+        this.data_creacio = data1;
+        this.data_previsio_finalitzacio = data;
         //   this.responsable;
         
     }
@@ -51,16 +51,16 @@ function guardarToDo() {
     try {
         let dato = document.getElementById("text1").value;
         let data = new Date(document.getElementById("PrevFinalitzacio").value).toLocaleDateString();
-
+        let data1 = new Date().toLocaleDateString();
         if (dato == "" || dato == null) {
             throw "No hi ha text que afegir";
         }
         else {
             document.getElementById("text1").value = null;
 
-
             
-           let tasca = new Task(dato, codi[0],data);
+            
+           let tasca = new Task(dato, codi[0],data1,data);
            Generarid();
 
 
@@ -136,7 +136,7 @@ function carregarlocal() {
         if (localStorage.llista) {
                 var data = [] = JSON.parse(localStorage.getItem('llista'));
                 data.forEach(element => {
-                todo.push(new Task(element._text, element._codi));
+                todo.push(new Task(element._text, element._codi,element.data_creacio,element.data_previsio_finalitzacio));
                 });
                 
             if (localStorage.id)
