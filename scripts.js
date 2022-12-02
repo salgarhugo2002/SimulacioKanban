@@ -57,10 +57,10 @@ function guardarToDo() {
         }
         else {
             document.getElementById("text1").value = null;
-            console.log("avans");
+            
            let tasca = new Task(dato, codi[0]);
            Generarid();
-            console.log("despres");
+            
             todo.push(tasca);
 
             mostrarToDo();
@@ -74,22 +74,40 @@ function guardarToDo() {
 }
 
 function mostrarToDo() {
-    console.log("mostrartodo")
     var node;
-
+    
     document.getElementById('listaToDo').innerHTML = '';
-    console.log(todo)
 
     todo.forEach(element => {
         node = document.createElement('li');
-
-        node.appendChild(document.createTextNode(element.RetornText()));
-        console.log(element)
-
+        node.draggable= true
+        a = document.createElement('input');
+        a.type = "checkbox";
+        a.className = "hola"
+        node.appendChild(document.createTextNode(element.RetornText() + " "));
+        node.appendChild(a)
+       
         document.querySelector('#listaToDo').appendChild(node);
+        
     });
+    
+}
+function validar_check(){
+    
+var checks = document.querySelectorAll('.hola')
+
+    checks.forEach((e)=>{
+        
+        if (e.checked == true) {
+            console.log("Chequeado")
+           
+        }else{
+            console.log("ningun elemento seleccionado")
+        }
+    })
 
 }
+
 
 
 function eliminarToDo() {
