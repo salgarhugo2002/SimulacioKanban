@@ -99,7 +99,7 @@
                               </div>
                           </form>
                       </div>
-                      <div class="modal-footer">
+                      <div class="modal-footer d-flex justify-content-center">
                           
                           <button type="button" class="btn btn-outline-success" id="btng"
                               onclick="guardarToDo()">Afegir</button>
@@ -113,18 +113,18 @@
           
         <!-- Modal -->
         <div class="modal fade " id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog modal-sm modal-dialog-centered">
+          <div class="modal-dialog modal-sm modal-dialog-centered">
             <div class="modal-content">
-              <div class="modal-header">
+              <div class="modal-header text-bg-danger">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Eliminar tasca</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
                 <input type="text" class="form-control" id="textEliminar"></textarea>
               </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" onclick="eliminarToDo()">Guardar</button>
+              <div class="modal-footer d-flex justify-content-center">
+                <button type="button" class="btn btn-outline-danger" onclick="eliminarToDo()">YES</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">NO</button> 
               </div>
             </div>
           </div>
