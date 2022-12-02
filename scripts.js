@@ -5,12 +5,10 @@ var codi = [1];
 class Task {
 
     constructor(_textp, _codip) {
-
+        
         this._text = _textp;
-
-       this._codi = _codip;
-
-          this.data_creacio = new Date();
+        this._codi = _codip;
+        this.data_creacio = new Date();
         //   this.data_previsio_finalitzacio;
         //   this.responsable;
         
