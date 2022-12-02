@@ -4,13 +4,13 @@ var codi = [1];
 
 class Task {
 
-    constructor(_textp, _codip,data1,data) {
+    constructor(_textp, _codip,data1,data,responsable) {
         
         this._text = _textp;
         this._codi = _codip;
         this.data_creacio = data1;
         this.data_previsio_finalitzacio = data;
-        //   this.responsable;
+        this.responsable = responsable;
         
     }
 
@@ -49,6 +49,7 @@ carregarlocal();
 
 function guardarToDo() {
     try {
+        let responsable = document.getElementById('resp').value
         let dato = document.getElementById("text1").value;
         let data = new Date(document.getElementById("PrevFinalitzacio").value).toLocaleDateString();
         let data1 = new Date().toLocaleDateString();
@@ -60,7 +61,7 @@ function guardarToDo() {
 
             
             
-           let tasca = new Task(dato, codi[0],data1,data);
+           let tasca = new Task(dato, codi[0],data1,data,responsable);
            Generarid();
 
 
@@ -136,7 +137,7 @@ function carregarlocal() {
         if (localStorage.llista) {
                 var data = [] = JSON.parse(localStorage.getItem('llista'));
                 data.forEach(element => {
-                todo.push(new Task(element._text, element._codi,element.data_creacio,element.data_previsio_finalitzacio));
+                todo.push(new Task(element._text, element._codi,element.data_creacio,element.data_previsio_finalitzacio,element.responsable));
                 });
                 
             if (localStorage.id)
