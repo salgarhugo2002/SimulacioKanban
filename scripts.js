@@ -62,7 +62,7 @@ function guardarToDo() {
            Generarid();
             
             todo.push(tasca);
-
+            
             mostrarToDo();
             guardarlocal();
         }
@@ -159,4 +159,4 @@ document.getElementById("text1").addEventListener("keypress", function (event) {
     }
 })
 
-    ;  
+    
