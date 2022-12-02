@@ -1,25 +1,23 @@
-img {
+img{
   width: 300px;
   height: 300px;
 }
-
-.container-fluid {
-  text-align: center;
-  margin: auto;
-  margin-bottom: 50px;
-
+.container-fluid{
+ text-align: center;
+ margin: auto;
+ margin-bottom: 50px;
+ 
 }
 
-.container {
+.container{
   margin-top: 5px;
 }
 
-.row {
-
+.row{
+ 
   min-height: 300px;
 }
-
-.col-md-3 {
+.col-md-3{
   min-width: 33%;
   min-height: 300px;
   display: block;
@@ -27,33 +25,31 @@ img {
   text-align: center;
 }
 
-.col-md-3>ol {
-  text-align: justify;
+.col-md-3 > ol{
+  text-align:justify;
   word-wrap: break-word;
 }
 
-.grid {
-  margin-top: 10px;
+.grid{
+  margin-top:10px;
 }
 
 
-#inputs {
+#inputs{
   width: 40%;
   margin: auto;
   margin-top: 5px;
-
+  
 }
 
 
-.btns {
+.btns{
   border-radius: 5px;
   background-color: #2f89fc;
   font-size: 20px;
   width: 120px;
 }
-
-.btn:hover {
-  background-color: #4CAF50;
-  /* Green */
+.btn:hover{
+  background-color: #4CAF50; /* Green */
   color: white;
 }
