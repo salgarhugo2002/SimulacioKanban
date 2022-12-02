@@ -8,9 +8,9 @@ class Task {
         
         this._text = _textp;
         this._codi = _codip;
-        this.data_creacio = data1;
-        this.data_previsio_finalitzacio = data;
-        this.responsable = responsable;
+        this._data_creacio = data1;
+        this._data_previsio_finalitzacio = data;
+        this._responsable = responsable;
         
     }
 
@@ -137,7 +137,7 @@ function carregarlocal() {
         if (localStorage.llista) {
                 var data = [] = JSON.parse(localStorage.getItem('llista'));
                 data.forEach(element => {
-                todo.push(new Task(element._text, element._codi,element.data_creacio,element.data_previsio_finalitzacio,element.responsable));
+                todo.push(new Task(element._text, element._codi,element._data_creacio,element._data_previsio_finalitzacio,element._responsable));
                 });
                 
             if (localStorage.id)
