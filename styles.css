@@ -1,3 +1,7 @@
+body{
+  background-color: lightgrey !important;
+}
+
 img{
   width: 300px;
   height: 300px;
@@ -14,7 +18,7 @@ img{
 }
 
 .row{
- 
+  
   min-height: 300px;
 }
 .col-md-3{
@@ -23,6 +27,7 @@ img{
   display: block;
   border: 5px solid red;
   text-align: center;
+  box-shadow: 0px 10px 10px black;
 }
 
 .col-md-3 > ol{
@@ -52,4 +57,111 @@ img{
 .btn:hover{
   background-color: #4CAF50; /* Green */
   color: white;
+}
+
+.container2 {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.title {
+  margin: 0 0 1rem;
+  padding: 1rem;
+  border-bottom: 1px solid black;
+  background-color: #7e57c2;
+}
+
+.tasks {
+  width: 30%;
+  text-align: center;
+  background: rgb(48, 166, 221);
+  border: 1px solid black;
+  min-height: 130px;
+}
+
+.tasks:first-child {
+  margin-right: 1rem;
+}
+
+.task {
+  background-color: #7e57c2;
+  padding: 1rem;
+  border-bottom: 1px solid #000;
+  cursor: move;
+}
+
+.task:first-child {
+  border-top: 1px solid #000;
+}
+
+.task:last-child {
+  border-bottom: none;
+}
+
+.active {
+  background-color: #fff;
+  color: #000;
+}
+
+div#divToDo > h1 {
+  position: relative;
+  padding: 0;
+  margin: 0;
+  font-family: "Raleway", sans-serif;
+  font-weight: 300;
+  font-size: 40px;
+  color: #080808;
+  -webkit-transition: all 0.4s ease 0s;
+  -o-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s;
+}
+
+div#divToDo > h1 {
+  text-align: center;
+  text-transform: uppercase;
+  padding-bottom: 5px;
+}
+div#divToDo > h1:before {
+  width: 28px;
+  height: 5px;
+  display: block;
+  content: "";
+  position: absolute;
+  bottom: 3px;
+  left: 50%;
+  margin-left: -14px;
+  background-color: #b80000;
+}
+div#divToDo > h1:after {
+  width: 100px;
+  height: 1px;
+  display: block;
+  content: "";
+  position: relative;
+  margin-top: 25px;
+  left: 50%;
+  margin-left: -50px;
+  background-color: #b80000;
+}
+
+.pollaxxl{
+  float: right;
+}
+
+.pollaxxl:hover{
+  background-color: #b80000;
+}
+
+.btn-light{
+  background-color: #000 !important;
+  float: right;
+  position: relative;
+  bottom: 7px;
+  color: #2f89fc !important;
+}
+
+.btn-light:hover{
+  color: pink !important;
 }

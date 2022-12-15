@@ -4,13 +4,14 @@ var codi = [1];
 
 class Task {
 
-    constructor(_textp, _codip, data1, data, responsable) {
+    constructor(_textp, _codip, data1, data, responsables,listas) {
 
         this._text = _textp;
         this._codi = _codip;
         this._data_creacio = data1;
         this._data_previsio_finalitzacio = data;
-        this._responsable = responsable;
+        this._responsable = responsables;
+        this._Lista = listas;
 
     }
 
@@ -37,6 +38,15 @@ class Task {
     }
 
 
+    RetornResponsable(){
+        return this._responsable;
+    }
+
+    RetornLista(){
+        return this._Lista;
+    }
+
+
 }
 carregarlocal();
 function Generarid() {
@@ -57,12 +67,12 @@ function guardarToDo() {
         else {
             document.getElementById("text1").value = null;
 
-            let tasca = new Task(dato, codi[0], data1, data, responsable);
+            let tasca = new Task(dato, codi[0], data1, data, responsable,"ToDo");
             Generarid();
 
             todo.push(tasca);
 
-            mostrarToDo();
+            mostrar();
             guardarlocal();
         }
 
@@ -72,49 +82,52 @@ function guardarToDo() {
 
 }
 
-function mostrarToDo() {
+function mostrar() {
     var node;
-
-    document.getElementById('listaToDo').innerHTML = '';
-
+    var boton
+    
+    let cont = 1
+    
     todo.forEach(element => {
+        boton =document.createElement('button')
         node = document.createElement('li');
         node.draggable = true
-        a = document.createElement('input');
-        a.type = "checkbox";
-        a.className = "hola"
+        node.className = "task"
+        node.id = cont
+        cont++;
+        boton.innerHTML = "Boton"
+        boton.value = element.codi();
+        boton.className = "pollon"
+        
         node.appendChild(document.createTextNode(element.RetornText() + " "));
-        node.appendChild(a)
+        node.appendChild(boton)
 
-        document.querySelector('#listaToDo').appendChild(node);
-
+        if(element.RetornLista() = "ToDo")
+        {
+            document.getElementById('listaToDo').innerHTML = '';
+            document.querySelector('#listaToDo').appendChild(node);
+        }else if(element.RetornLista() = "Doing")
+        {
+            document.getElementById('listaDoing').innerHTML = '';
+            document.querySelector('#listaDoing').appendChild(node);
+        }else if(element.RetornLista() = "Done")
+        {
+            document.getElementById('listaDone').innerHTML = '';
+            document.querySelector('#listaDone').appendChild(node);
+        }
+        
+       
     });
 
 }
-function validar_check() {
-
-    var checks = document.querySelectorAll('.hola')
-
-    checks.forEach((e) => {
-
-        if (e.checked == true) {
-            console.log("Chequeado")
-
-        } else {
-            console.log("ningun elemento seleccionado")
-        }
-    })
-
-}
-
-
 
 function eliminarToDo() {
     let num = parseInt(document.getElementById("textEliminar").value - 1);
     todo.splice(num, 1);
-    mostrarToDo();
+    mostrar();
     guardarlocal();
 }
+
 
 
 function guardarlocal() {
@@ -131,13 +144,13 @@ function carregarlocal() {
         if (localStorage.llista) {
             var data = [] = JSON.parse(localStorage.getItem('llista'));
             data.forEach(element => {
-                todo.push(new Task(element._text, element._codi, element._data_creacio, element._data_previsio_finalitzacio, element._responsable));
+                todo.push(new Task(element._text, element._codi, element._data_creacio, element._data_previsio_finalitzacio, element._responsabl,element._Lista));
             });
 
             if (localStorage.id)
                 codi = JSON.parse(localStorage.getItem('id'));
 
-            mostrarToDo();
+            mostrar();
         } else
             localStorage.setItem('llista', JSON.stringify(todo));
         localStorage.setItem('id', JSON.stringify(codi));
@@ -146,8 +159,6 @@ function carregarlocal() {
         alert("Sorry, your browser does not support web storage...");
 
     }
-
-
 
 }
 
@@ -158,3 +169,116 @@ document.getElementById("text1").addEventListener("keypress", function (event) {
     }
 })
 
+
+const dragToDo = document.getElementById('divToDo')
+const dragDoing = document.getElementById('divDoing')
+const dragDone = document.getElementById('divDone')
+const listaDoing = document.getElementById('listaDoing')
+const listaToDo = document.getElementById('listaToDo')
+const listaDone= document.getElementById('listaDone')
+
+dragToDo.addEventListener('dragstart', (e) => {
+    e.dataTransfer.setData('text/plain', e.target.id)
+})
+
+dragToDo.addEventListener('drag', (e) => {
+    e.target.classList.add('active')
+})
+
+dragToDo.addEventListener('dragend', (e) => {
+    e.target.classList.remove('active')
+})
+
+dragToDo.addEventListener('dragover', (e) => {
+    e.preventDefault()
+})
+
+dragDoing.addEventListener('dragstart', (e) => {
+    e.dataTransfer.setData('text/plain', e.target.id)
+})
+
+dragDoing.addEventListener('drag', (e) => {
+    e.target.classList.add('active')
+})
+
+dragDoing.addEventListener('dragend', (e) => {
+    e.target.classList.remove('active')
+})
+
+dragDone.addEventListener('dragstart', (e) => {
+    e.dataTransfer.setData('text/plain', e.target.id)
+})
+
+dragDone.addEventListener('drag', (e) => {
+    e.target.classList.add('active')
+})
+
+dragDone.addEventListener('dragend', (e) => {
+    e.target.classList.remove('active')
+})
+
+dragDone.addEventListener('dragover', (e) => {
+    e.preventDefault()
+})
+
+dragDoing.addEventListener('dragover', (e) => {
+    e.preventDefault()
+})
+
+dragDoing.addEventListener('drop', (e) => {
+    e.preventDefault()
+    const element = document.getElementById(e.dataTransfer.getData('text'))
+    element.classList.remove('active')
+    listaDoing.appendChild(listaToDo.removeChild(element))
+
+})
+
+
+
+dragToDo.addEventListener('drop', (e) => {
+    e.preventDefault()
+    const element = document.getElementById(e.dataTransfer.getData('text'))
+    element.classList.remove('active')
+    listaToDo.appendChild(listaDoing.removeChild(element))
+
+
+})
+
+dragDone.addEventListener('drop', (e) => {
+    e.preventDefault()
+    const element = document.getElementById(e.dataTransfer.getData('text'))
+    element.classList.remove('active')
+    listaDone.appendChild(listaDoing.removeChild(element))
+
+
+})
+
+dragDoing.addEventListener('drop', (e) => {
+    e.preventDefault()
+    const element = document.getElementById(e.dataTransfer.getData('text'))
+    element.classList.remove('active')
+    listaDoing.appendChild(listaDone.removeChild(element))
+
+
+})
+
+
+
+
+
+function mostrarDatos(){
+  
+        todo.forEach(element => {
+           
+            document.getElementById('mierda').innerHTML = element.RetornResponsable();
+           
+           
+            
+        });
+}
+
+    $(document).ready(function(){
+        $('.pollon').click(function(){
+                mostrar()
+        })
+    })
