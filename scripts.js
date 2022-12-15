@@ -15,8 +15,8 @@ class Task {
 
     }
 
-    get codi() {
-        return this.codi;
+    Retorncodi() {
+        return this._codi;
     }
     set codi(codi2) {
         this.codi = codi2;
@@ -96,21 +96,21 @@ function mostrar() {
         node.id = cont
         cont++;
         boton.innerHTML = "Boton"
-        boton.value = element.codi();
+        boton.value = element.Retorncodi();
         boton.className = "pollon"
         
         node.appendChild(document.createTextNode(element.RetornText() + " "));
         node.appendChild(boton)
 
-        if(element.RetornLista() = "ToDo")
+        if(element.RetornLista() == "ToDo")
         {
             document.getElementById('listaToDo').innerHTML = '';
             document.querySelector('#listaToDo').appendChild(node);
-        }else if(element.RetornLista() = "Doing")
+        }else if(element.RetornLista() == "Doing")
         {
             document.getElementById('listaDoing').innerHTML = '';
             document.querySelector('#listaDoing').appendChild(node);
-        }else if(element.RetornLista() = "Done")
+        }else if(element.RetornLista() == "Done")
         {
             document.getElementById('listaDone').innerHTML = '';
             document.querySelector('#listaDone').appendChild(node);
