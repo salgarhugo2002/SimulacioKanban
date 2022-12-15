@@ -95,18 +95,40 @@
                           <form>
                               <div class="mb-3">
                                   <label for="recipient-name" class="col-form-label">Responsable:</label>
-                                  <select name="" id="resp">
-                                    <option value="ivan">Ivan</option>
-                                    <option value="hugo">Hugo</option>
-                                    <option value="marc">Marc</option>
+                                  <select class="form-select" id="resp" aria-label="Default select example">
+                                    <option value="Ivan" selected>Ivan</option>
+                                    <option value="Hugo">Hugo</option>
+                                    <option value="Marc">Marc</option>
                                   </select>
                               </div>
                               <div class="mb-3">
                                   <label for="message-text" class="col-form-label">Tasca:</label>
                                   <textarea class="form-control" id="text1"></textarea>
                                   <br>
-                                  <input type="date" id="PrevFinalitzacio" name="trip-start" value="2022-12-02"
-                                      min="2022-12-02" max="2023-01-01">
+                                  <section class="ftco-section">
+                                    <div class="container">
+                                      <div class="row justify-content-center">
+                                        <div class="col-md-6 text-center mb-5">
+                                          <h2 class="heading-section">Calendar #09</h2>
+                                        </div>
+                                      </div>
+                                      <div class="row justify-content-center">
+                                        <div class="col-md-4 text-center">
+                                          <h3 class="h5">Calendar Datepicker</h3>
+                                          <div class="w-100">
+                                            <form action="" method="post" class="datepickers">
+                                              <div class="form-group">
+                                                <!-- <label class="label-control" for="id_start_datetime">Datetime picker</label> -->
+                                                <div class="input-group date" id="id_0">
+                                                  <input type="text" value="" class="form-control" placeholder="MM/DD/YYYY hh:mm:ss" required/>
+                                                </div>
+                                              </div>
+                                            </form>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </section>
                               </div>
                           </form>
                       </div>
@@ -149,7 +171,12 @@
             </div>
         </div>
 
-        
+        <script src="js/jquery.min.js"></script>
+        <script src="js/popper.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/moment-with-locales.min.js"></script>
+        <script src="js/bootstrap-datetimepicker.min.js"></script>
+        <script src="js/main.js"></script>
         <script src="./scripts.js"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
