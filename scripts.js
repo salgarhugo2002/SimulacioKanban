@@ -77,7 +77,7 @@ function mostrarToDo() {
     var boton
     document.getElementById('listaToDo').innerHTML = '';
     let cont = 1
-
+    
     todo.forEach(element => {
         boton =document.createElement('button')
         node = document.createElement('li');
@@ -94,7 +94,7 @@ function mostrarToDo() {
         node.appendChild(boton)
 
         document.querySelector('#listaToDo').appendChild(node);
-
+       
     });
 
 }
