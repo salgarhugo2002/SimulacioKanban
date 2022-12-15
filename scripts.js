@@ -4,14 +4,14 @@ var codi = [1];
 
 class Task {
 
-    constructor(_textp, _codip, data1, data, responsable,) {
+    constructor(_textp, _codip, data1, data, responsables,listas) {
 
         this._text = _textp;
         this._codi = _codip;
         this._data_creacio = data1;
         this._data_previsio_finalitzacio = data;
-        this._responsable = responsable;
-        this._Lista = lista;
+        this._responsable = responsables;
+        this._Lista = listas;
 
     }
 
@@ -279,6 +279,6 @@ function mostrarDatos(){
 
     $(document).ready(function(){
         $('.pollon').click(function(){
-                mostrarDatos()
+                mostrar()
         })
     })
