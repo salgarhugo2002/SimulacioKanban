@@ -74,39 +74,30 @@ function guardarToDo() {
 
 function mostrarToDo() {
     var node;
-
+    var boton
     document.getElementById('listaToDo').innerHTML = '';
+    let cont = 1
 
     todo.forEach(element => {
+        boton =document.createElement('button')
         node = document.createElement('li');
         node.draggable = true
-        a = document.createElement('input');
-        a.type = "checkbox";
-        a.className = "hola"
+        node.className = "task"
+        node.id = cont
+        cont++;
+        boton.innerHTML = "Boton"
+        boton.className = "pollon"
+        
+        
+        
         node.appendChild(document.createTextNode(element.RetornText() + " "));
-        node.appendChild(a)
+        node.appendChild(boton)
 
         document.querySelector('#listaToDo').appendChild(node);
 
     });
 
 }
-function validar_check() {
-
-    var checks = document.querySelectorAll('.hola')
-
-    checks.forEach((e) => {
-
-        if (e.checked == true) {
-            console.log("Chequeado")
-
-        } else {
-            console.log("ningun elemento seleccionado")
-        }
-    })
-
-}
-
 
 
 function eliminarToDo() {
@@ -158,3 +149,120 @@ document.getElementById("text1").addEventListener("keypress", function (event) {
     }
 })
 
+
+const dragToDo = document.getElementById('divToDo')
+const dragDoing = document.getElementById('divDoing')
+const dragDone = document.getElementById('divDone')
+const listaDoing = document.getElementById('listaDoing')
+const listaToDo = document.getElementById('listaToDo')
+const listaDone= document.getElementById('listaDone')
+
+dragToDo.addEventListener('dragstart', (e) => {
+    e.dataTransfer.setData('text/plain', e.target.id)
+})
+
+dragToDo.addEventListener('drag', (e) => {
+    e.target.classList.add('active')
+})
+
+dragToDo.addEventListener('dragend', (e) => {
+    e.target.classList.remove('active')
+})
+
+dragToDo.addEventListener('dragover', (e) => {
+    e.preventDefault()
+})
+
+dragDoing.addEventListener('dragstart', (e) => {
+    e.dataTransfer.setData('text/plain', e.target.id)
+})
+
+dragDoing.addEventListener('drag', (e) => {
+    e.target.classList.add('active')
+})
+
+dragDoing.addEventListener('dragend', (e) => {
+    e.target.classList.remove('active')
+})
+
+dragDone.addEventListener('dragstart', (e) => {
+    e.dataTransfer.setData('text/plain', e.target.id)
+})
+
+dragDone.addEventListener('drag', (e) => {
+    e.target.classList.add('active')
+})
+
+dragDone.addEventListener('dragend', (e) => {
+    e.target.classList.remove('active')
+})
+
+dragDone.addEventListener('dragover', (e) => {
+    e.preventDefault()
+})
+
+//OBLIGATORIO, SI NO, NO FUNCIONA
+dragDoing.addEventListener('dragover', (e) => {
+    e.preventDefault()
+})
+
+dragDoing.addEventListener('drop', (e) => {
+    e.preventDefault()
+    const element = document.getElementById(e.dataTransfer.getData('text'))
+    element.classList.remove('active')
+    listaDoing.appendChild(listaToDo.removeChild(element))
+})
+
+
+
+dragToDo.addEventListener('drop', (e) => {
+    e.preventDefault()
+    const element = document.getElementById(e.dataTransfer.getData('text'))
+    element.classList.remove('active')
+    listaToDo.appendChild(listaDoing.removeChild(element))
+})
+
+dragDone.addEventListener('drop', (e) => {
+    e.preventDefault()
+    const element = document.getElementById(e.dataTransfer.getData('text'))
+    element.classList.remove('active')
+    listaDone.appendChild(listaDoing.removeChild(element))
+})
+
+dragDoing.addEventListener('drop', (e) => {
+    e.preventDefault()
+    const element = document.getElementById(e.dataTransfer.getData('text'))
+    element.classList.remove('active')
+    listaDoing.appendChild(listaDone.removeChild(element))
+})
+
+
+
+
+
+function mostrarDatos(){
+  
+    
+        
+        var data = [] = JSON.parse(localStorage.getItem('llista'));
+        
+        data.forEach(element => {
+           
+            document.getElementById('mierda').innerHTML = element._responsable
+           
+           
+            
+        });
+       
+    
+
+   
+}
+
+    $(document).ready(function(){
+        $('.pollon').click(function(){
+            $(this).click(function(){
+                mostrarDatos()
+            })
+        })
+    })
