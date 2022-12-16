@@ -61,18 +61,18 @@ function Generarid() {
 
 
 function guardarToDo() {
-    
-    debugger; if (!validarTitol()) {
-        throw "No pots repetir titol";
-    } else {
 
+    try {
+        let responsable = document.getElementById('resp').value
+        let titol = document.getElementById("titol1").value;
+        let dato = document.getElementById("text1").value;
+        let data = new Date(document.getElementById("PrevFinalitzacio").value).toLocaleDateString();
+        let data1 = new Date().toLocaleDateString();
 
-        try {
-            let responsable = document.getElementById('resp').value
-            let titol = document.getElementById("titol1").value;
-            let dato = document.getElementById("text1").value;
-            let data = new Date(document.getElementById("PrevFinalitzacio").value).toLocaleDateString();
-            let data1 = new Date().toLocaleDateString();
+        if (!validarTitol()) {
+            throw "No pots repetir titol";
+        } else {
+
             if (dato == "" || dato == null) {
                 throw "Inserta un text";
             }
@@ -93,23 +93,31 @@ function guardarToDo() {
                 }
 
             }
-
-        } catch (err) {
-            alert(err);
         }
+
+    } catch (err) {
+        alert(err);
     }
+
 }
 
 function validarTitol() {
 
-    todo.forEach(element => {
+    let bool = true;
+    for(element of todo){
         if (element.RetornTitol() == document.getElementById("titol1").value) {
-            return false;
+            bool = false;
+            break;
         }
+        else {
+            bool = true;
+        }
+    };
 
-    });
-    return true;
+
+return bool;
 }
+
 function mostrar() {
     var node;
     document.getElementById('listaToDo').innerHTML = '';
