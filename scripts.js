@@ -4,7 +4,7 @@ var codi = [1];
 
 class Task {
 
-    constructor(_textp, _codip, data1, data, responsables,listas) {
+    constructor(_textp, _codip, data1, data, responsables, listas) {
 
         this._text = _textp;
         this._codi = _codip;
@@ -22,9 +22,6 @@ class Task {
         this.codi = codi2;
     }
 
-    get Text() {
-        return this.text;
-    }
     set Text(text) {
         this.text = text;
     }
@@ -38,12 +35,16 @@ class Task {
     }
 
 
-    RetornResponsable(){
+    RetornResponsable() {
         return this._responsable;
     }
 
-    RetornLista(){
+    RetornLista() {
         return this._Lista;
+    }
+
+    setLista(llista) {
+        this._Lista = llista
     }
 
 
@@ -67,7 +68,7 @@ function guardarToDo() {
         else {
             document.getElementById("text1").value = null;
 
-            let tasca = new Task(dato, codi[0], data1, data, responsable,"ToDo");
+            let tasca = new Task(dato, codi[0], data1, data, responsable, "ToDo");
             Generarid();
 
             todo.push(tasca);
@@ -85,38 +86,30 @@ function guardarToDo() {
 function mostrar() {
     var node;
     var boton
-    
+    document.getElementById('listaToDo').innerHTML = '';
+    document.getElementById('listaDoing').innerHTML = '';
+    document.getElementById('listaDone').innerHTML = '';
     let cont = 1
-    
+
     todo.forEach(element => {
-        boton =document.createElement('button')
         node = document.createElement('li');
         node.draggable = true
         node.className = "task"
         node.id = cont
         cont++;
-        boton.innerHTML = "Boton"
-        boton.value = element.Retorncodi();
-        boton.className = "pollon"
-        
-        node.appendChild(document.createTextNode(element.RetornText() + " "));
-        node.appendChild(boton)
 
-        if(element.RetornLista() == "ToDo")
-        {
-            document.getElementById('listaToDo').innerHTML = '';
+        node.appendChild(document.createTextNode(element.RetornText() + " "));
+
+        if (element.RetornLista() == "ToDo") {
             document.querySelector('#listaToDo').appendChild(node);
-        }else if(element.RetornLista() == "Doing")
-        {
-            document.getElementById('listaDoing').innerHTML = '';
+        } else if (element.RetornLista() == "Doing") {
             document.querySelector('#listaDoing').appendChild(node);
-        }else if(element.RetornLista() == "Done")
-        {
-            document.getElementById('listaDone').innerHTML = '';
+        } else if (element.RetornLista() == "Done") {
+
             document.querySelector('#listaDone').appendChild(node);
         }
-        
-       
+
+
     });
 
 }
@@ -144,7 +137,7 @@ function carregarlocal() {
         if (localStorage.llista) {
             var data = [] = JSON.parse(localStorage.getItem('llista'));
             data.forEach(element => {
-                todo.push(new Task(element._text, element._codi, element._data_creacio, element._data_previsio_finalitzacio, element._responsabl,element._Lista));
+                todo.push(new Task(element._text, element._codi, element._data_creacio, element._data_previsio_finalitzacio, element._responsabl, element._Lista));
             });
 
             if (localStorage.id)
@@ -175,7 +168,7 @@ const dragDoing = document.getElementById('divDoing')
 const dragDone = document.getElementById('divDone')
 const listaDoing = document.getElementById('listaDoing')
 const listaToDo = document.getElementById('listaToDo')
-const listaDone= document.getElementById('listaDone')
+const listaDone = document.getElementById('listaDone')
 
 dragToDo.addEventListener('dragstart', (e) => {
     e.dataTransfer.setData('text/plain', e.target.id)
@@ -193,6 +186,7 @@ dragToDo.addEventListener('dragover', (e) => {
     e.preventDefault()
 })
 
+
 dragDoing.addEventListener('dragstart', (e) => {
     e.dataTransfer.setData('text/plain', e.target.id)
 })
@@ -204,6 +198,12 @@ dragDoing.addEventListener('drag', (e) => {
 dragDoing.addEventListener('dragend', (e) => {
     e.target.classList.remove('active')
 })
+
+dragDoing.addEventListener('dragover', (e) => {
+    e.preventDefault()
+})
+
+
 
 dragDone.addEventListener('dragstart', (e) => {
     e.dataTransfer.setData('text/plain', e.target.id)
@@ -221,9 +221,9 @@ dragDone.addEventListener('dragover', (e) => {
     e.preventDefault()
 })
 
-dragDoing.addEventListener('dragover', (e) => {
-    e.preventDefault()
-})
+
+
+
 
 dragDoing.addEventListener('drop', (e) => {
     e.preventDefault()
@@ -231,9 +231,10 @@ dragDoing.addEventListener('drop', (e) => {
     element.classList.remove('active')
     listaDoing.appendChild(listaToDo.removeChild(element))
 
+    a = element.innerHTML;
+    CambiarLista(a, "Doing")
+
 })
-
-
 
 dragToDo.addEventListener('drop', (e) => {
     e.preventDefault()
@@ -241,6 +242,8 @@ dragToDo.addEventListener('drop', (e) => {
     element.classList.remove('active')
     listaToDo.appendChild(listaDoing.removeChild(element))
 
+    a = element.innerHTML;
+    CambiarLista(a, "ToDo")
 
 })
 
@@ -250,6 +253,8 @@ dragDone.addEventListener('drop', (e) => {
     element.classList.remove('active')
     listaDone.appendChild(listaDoing.removeChild(element))
 
+    a = element.innerHTML;
+    CambiarLista(a, "Done")
 
 })
 
@@ -260,25 +265,28 @@ dragDoing.addEventListener('drop', (e) => {
     listaDoing.appendChild(listaDone.removeChild(element))
 
 
+    a = element.innerHTML;
+    CambiarLista(a, "Doing")
+
 })
 
+function CambiarLista(text, lista) {
 
+    
+    todo.forEach(element => {
 
-
-
-function mostrarDatos(){
-  
-        todo.forEach(element => {
-           
-            document.getElementById('mierda').innerHTML = element.RetornResponsable();
-           
-           
+        console.log(text)
+        console.log(element.RetornText())
+       
+          if (text.trim() == element.RetornText()) {
             
-        });
-}
+            element.setLista(lista);
+           
+            console.log(123421321)
+        }
 
-    $(document).ready(function(){
-        $('.pollon').click(function(){
-                mostrar()
-        })
-    })
+    });
+
+    guardarlocal();
+
+}
