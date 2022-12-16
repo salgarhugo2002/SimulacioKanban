@@ -146,6 +146,10 @@ div#divToDo > h1:after {
   background-color: #b80000;
 }
 
+::selection{
+  background-color: #4c90af33;
+}
+
 .pollaxxl{
   float: right;
 }
