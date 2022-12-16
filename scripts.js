@@ -4,8 +4,9 @@ var codi = [1];
 
 class Task {
 
-    constructor(_textp, _codip, data1, data, responsables, listas) {
+    constructor(_titols, _textp, _codip, data1, data, responsables, listas) {
 
+        this._titol = _titols;
         this._text = _textp;
         this._codi = _codip;
         this._data_creacio = data1;
@@ -13,6 +14,9 @@ class Task {
         this._responsable = responsables;
         this._Lista = listas;
 
+    }
+    RetornTitol() {
+        return this._titol
     }
 
     Retorncodi() {
@@ -57,35 +61,57 @@ function Generarid() {
 
 
 function guardarToDo() {
-    try {
-        let responsable = document.getElementById('resp').value
-        let dato = document.getElementById("text1").value;
-        let data = new Date(document.getElementById("PrevFinalitzacio").value).toLocaleDateString();
-        let data1 = new Date().toLocaleDateString();
-        if (dato == "" || dato == null) {
-            throw "No hi ha text que afegir";
+    
+    debugger; if (!validarTitol()) {
+        throw "No pots repetir titol";
+    } else {
+
+
+        try {
+            let responsable = document.getElementById('resp').value
+            let titol = document.getElementById("titol1").value;
+            let dato = document.getElementById("text1").value;
+            let data = new Date(document.getElementById("PrevFinalitzacio").value).toLocaleDateString();
+            let data1 = new Date().toLocaleDateString();
+            if (dato == "" || dato == null) {
+                throw "Inserta un text";
+            }
+            else {
+                if (titol == "" || titol == null) {
+                    throw "Inserta un títol";
+                } else {
+
+                    document.getElementById("text1").value = null;
+                    document.getElementById("titol1").value = null;
+                    let tasca = new Task(titol, dato, codi[0], data1, data, responsable, "ToDo");
+                    Generarid();
+
+                    todo.push(tasca);
+
+                    mostrar();
+                    guardarlocal();
+                }
+
+            }
+
+        } catch (err) {
+            alert(err);
         }
-        else {
-            document.getElementById("text1").value = null;
-
-            let tasca = new Task(dato, codi[0], data1, data, responsable, "ToDo");
-            Generarid();
-
-            todo.push(tasca);
-
-            mostrar();
-            guardarlocal();
-        }
-
-    } catch (err) {
-        alert(err);
     }
-
 }
 
+function validarTitol() {
+
+    todo.forEach(element => {
+        if (element.RetornTitol() == document.getElementById("titol1").value) {
+            return false;
+        }
+
+    });
+    return true;
+}
 function mostrar() {
     var node;
-    var boton
     document.getElementById('listaToDo').innerHTML = '';
     document.getElementById('listaDoing').innerHTML = '';
     document.getElementById('listaDone').innerHTML = '';
@@ -98,7 +124,7 @@ function mostrar() {
         node.id = cont
         cont++;
 
-        node.appendChild(document.createTextNode(element.RetornText() + " "));
+        node.appendChild(document.createTextNode(element.RetornTitol() + " "));
 
         if (element.RetornLista() == "ToDo") {
             document.querySelector('#listaToDo').appendChild(node);
@@ -137,7 +163,7 @@ function carregarlocal() {
         if (localStorage.llista) {
             var data = [] = JSON.parse(localStorage.getItem('llista'));
             data.forEach(element => {
-                todo.push(new Task(element._text, element._codi, element._data_creacio, element._data_previsio_finalitzacio, element._responsabl, element._Lista));
+                todo.push(new Task(element._titol, element._text, element._codi, element._data_creacio, element._data_previsio_finalitzacio, element._responsabl, element._Lista));
             });
 
             if (localStorage.id)
@@ -272,16 +298,12 @@ dragDoing.addEventListener('drop', (e) => {
 
 function CambiarLista(text, lista) {
 
-    
-    todo.forEach(element => {
 
-        console.log(text)
-        console.log(element.RetornText())
-       
-          if (text.trim() == element.RetornText()) {
-            
+    todo.forEach(element => {
+        if (text.trim() == element.RetornTitol()) {
+
             element.setLista(lista);
-           
+
             console.log(123421321)
         }
 
