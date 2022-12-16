@@ -1,4 +1,5 @@
 
+
 var todo = [];
 var codi = [1];
 
@@ -148,9 +149,20 @@ function mostrar() {
 
 }
 
-function eliminarToDo() {
-    let num = parseInt(document.getElementById("textEliminar").value - 1);
-    todo.splice(num, 1);
+function eliminarToDo(text) {
+    let cont = 0;
+    todo.forEach(element => {
+        if (text.trim() == element.RetornTitol()) {
+
+            
+            todo.splice(cont, 1);
+            
+        }else{
+            cont++;
+        }
+
+    });
+    
     mostrar();
     guardarlocal();
 }
@@ -200,6 +212,7 @@ document.getElementById("text1").addEventListener("keypress", function (event) {
 const dragToDo = document.getElementById('divToDo')
 const dragDoing = document.getElementById('divDoing')
 const dragDone = document.getElementById('divDone')
+const papelera = document.getElementById('papelera')
 const listaDoing = document.getElementById('listaDoing')
 const listaToDo = document.getElementById('listaToDo')
 const listaDone = document.getElementById('listaDone')
@@ -257,7 +270,7 @@ dragDone.addEventListener('dragover', (e) => {
 
 
 
- 
+
 
 dragDoing.addEventListener('drop', (e) => {
     e.preventDefault()
@@ -304,6 +317,8 @@ dragDoing.addEventListener('drop', (e) => {
 
 })
 
+
+
 function CambiarLista(text, lista) {
 
 
@@ -320,3 +335,38 @@ function CambiarLista(text, lista) {
     guardarlocal();
 
 }
+
+
+
+papelera.addEventListener('dragstart', (e) => {
+    e.dataTransfer.setData('text/plain', e.target.id)
+    
+})
+
+papelera.addEventListener('drag', (e) => {
+    e.target.classList.add('active')
+})
+
+  papelera.addEventListener('dragend', (e) => {
+    e.target.classList.remove('active')
+})
+
+papelera.addEventListener('dragover', (e) => {
+    e.preventDefault()
+})
+
+papelera.addEventListener('drop', (e) => {
+    e.preventDefault()
+    const element = document.getElementById(e.dataTransfer.getData('text'))
+    element.classList.remove('active')
+
+    a = element.innerHTML;
+    eliminarToDo(a)
+    
+})
+
+let msg = document.getElementById('papelera')
+
+msg.addEventListener('click' ,() =>{
+    alert("polla")
+})

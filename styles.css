@@ -169,3 +169,20 @@ div#divToDo > h1:after {
 .btn-light:hover{
   color: pink !important;
 }
+
+#papelera{
+  min-width: 120px;
+  min-height: 100px;
+  max-width: 120px;
+  max-height: 100px;
+  
+  margin-top: 15px;
+}
+
+
+#img-papelera{
+  transition: 0.5s;
+}
+#img-papelera:hover{
+  color: red;
+}
