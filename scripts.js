@@ -5,7 +5,7 @@ var codi = [1];
 
 class Task {
 
-    constructor(_titols, _textp, _codip, data1, data, responsables, listas) {
+    constructor(_titols, _textp, _codip, data1, data, responsables, listas,prioridad) {
 
         this._titol = _titols;
         this._text = _textp;
@@ -14,7 +14,7 @@ class Task {
         this._data_previsio_finalitzacio = data;
         this._responsable = responsables;
         this._Lista = listas;
-
+        this.prioridad = prioridad
     }
     RetornTitol() {
         return this._titol
@@ -51,6 +51,9 @@ class Task {
     setLista(llista) {
         this._Lista = llista
     }
+    Prio() {
+        return this.prioridad
+    }
 
 
 }
@@ -69,6 +72,8 @@ function guardarToDo() {
         let dato = document.getElementById("text1").value;
         let data = new Date(document.getElementById("PrevFinalitzacio").value).toLocaleDateString();
         let data1 = new Date().toLocaleDateString();
+        let prio = new Date().toLocaleDateString();
+
 
         if (!validarTitol()) {
             throw "No pots repetir titol";
@@ -365,8 +370,25 @@ papelera.addEventListener('drop', (e) => {
     
 })
 
-let msg = document.getElementById('papelera')
+ 
 
-msg.addEventListener('click' ,() =>{
-    alert("polla")
-})
+  
+    $(document).ready(function(){
+        $('#btng').click(function(){
+            if($('#normal').is(':checked')){
+              
+              $('.task').css('backgroundColor','green')
+              
+            } else if($('#alta').is(':checked')){
+              
+              $('.task').css('backgroundColor','red')
+            }else if($('#baixa').is(':checked')){
+              
+              $('.task').css('backgroundColor','grey')
+            }
+            
+            
+        })
+      })
+    
+
