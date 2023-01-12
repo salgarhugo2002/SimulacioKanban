@@ -3,10 +3,11 @@
 var todo = [];
 var codi = [1];
 
+
+
 class Task {
 
     constructor(_titols, _textp, _codip, data1, data, responsables, listas,prioridad) {
-
         this._titol = _titols;
         this._text = _textp;
         this._codi = _codip;
@@ -14,7 +15,7 @@ class Task {
         this._data_previsio_finalitzacio = data;
         this._responsable = responsables;
         this._Lista = listas;
-        this.prioridad = prioridad
+        this._prioridad = prioridad
     }
     RetornTitol() {
         return this._titol
@@ -52,7 +53,7 @@ class Task {
         this._Lista = llista
     }
     Prio() {
-        return this.prioridad
+        return this._prioridad
     }
 
 
@@ -72,7 +73,7 @@ function guardarToDo() {
         let dato = document.getElementById("text1").value;
         let data = new Date(document.getElementById("PrevFinalitzacio").value).toLocaleDateString();
         let data1 = new Date().toLocaleDateString();
-        let prio = new Date().toLocaleDateString();
+        let prio = document.getElementById('pri').value
 
 
         if (!validarTitol()) {
@@ -89,7 +90,7 @@ function guardarToDo() {
 
                     document.getElementById("text1").value = null;
                     document.getElementById("titol1").value = null;
-                    let tasca = new Task(titol, dato, codi[0], data1, data, responsable, "ToDo");
+                    let tasca = new Task(titol, dato, codi[0], data1, data, responsable, "ToDo" , prio);
                     Generarid();
 
                     todo.push(tasca);
@@ -136,6 +137,14 @@ function mostrar() {
         node.draggable = true
         node.className = "task"
         node.id = cont
+        if (element.Prio() == "Alta") {
+            node.style.backgroundColor = "red"
+        }else if(element.Prio() == "Normal"){
+            node.style.backgroundColor = "cyan"
+        }
+        else if(element.Prio() == "Baixa"){
+            node.style.backgroundColor = "lightgreen"
+        }
         cont++;
 
         node.appendChild(document.createTextNode(element.RetornTitol() + " "));
@@ -188,7 +197,7 @@ function carregarlocal() {
         if (localStorage.llista) {
             var data = [] = JSON.parse(localStorage.getItem('llista'));
             data.forEach(element => {
-                todo.push(new Task(element._titol, element._text, element._codi, element._data_creacio, element._data_previsio_finalitzacio, element._responsabl, element._Lista));
+                todo.push(new Task(element._titol, element._text, element._codi, element._data_creacio, element._data_previsio_finalitzacio, element._responsabl, element._Lista,element._prioridad));
             });
 
             if (localStorage.id)
