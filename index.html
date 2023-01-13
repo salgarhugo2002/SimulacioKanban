@@ -7,22 +7,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./styles.css">
   <title>Document</title>
+
+  <!-- Llibreries de Bootstrap. -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+  <!-- Llibreries de JQuery. -->
   <script src="https://code.jquery.com/jquery-3.6.1.min.js"
     integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+
+  <!-- Llibreries de Google Fonts per al tipus de lletres. -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Lilita+One&display=swap"
     rel="stylesheet">
+
 </head>
 
 <body>
-
-  <div class="container-fluid" id="cabecera"
-    style="background-color: black; height: 100px;display: flex; justify-content: center; align-items: center; background-image: url('./Imagenes/cabecera.jpg'); background-size: cover;">
+  <div class="container-fluid" id="cabecera">
     <h1 style="text-align: center;color: white; font-family: 'Gloria Hallelujah', cursive;">K A N B A N</h1>
   </div>
+
   <div class="container">
     <div class="row">
       <div class="col-md-3" id="divToDo">
@@ -57,10 +63,8 @@
   <div class="grid text-center">
     <div class="g-col-4">
       <div class="btn" role="group" aria-label="Basic outlined example">
-
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
           data-bs-whatever="@getbootstrap">Afegir tasca</button>
-
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
@@ -93,7 +97,6 @@
                       <option value="Normal">Normal</option>
                       <option value="Baixa">Baixa</option>
                     </select>
-
                     <br>
                     <input type="date" id="PrevFinalitzacio" name="trip-start"
                       style="border:0px; background-color: rgb(252, 252, 241); outline: none;">
@@ -112,8 +115,6 @@
           </div>
         </div>
       </div>
-
-
       <div id="papelera" class="container-fluid d-flex align-items-center justify-content-center">
         <svg xmlns="http://www.w3.org/2000/svg" id="img-papelera" width="100" height="100" fill="currentColor"
           class="bi bi-trash btn" data-bs-toggle="modal" href="#exampleModalToggle" role="button" viewBox="0 0 16 16"
@@ -142,22 +143,16 @@
                   Per esborrar un element de la llista, arrossega'l cap a la paperera
                 </div>
               </div>
-
             </div>
           </div>
         </div>
       </div>
-
-
-      <p id="mierda"></p>
-
-
-      <script src="./scripts.js"></script>
-
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
-        </script>
-
+    </div>
+  </div>
+  <script src="./scripts.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+    crossorigin="anonymous">
+  </script>
 </body>
-
 </html>

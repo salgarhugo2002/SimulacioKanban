@@ -169,9 +169,9 @@ function mostrar() {
         node.className = "task"
         node.id = cont
         if (element.Prio() == "Alta") {
-            node.style.backgroundColor = "red"
-        } else if (element.Prio() == "Normal") {
-            node.style.backgroundColor = "cyan"
+            node.style.backgroundColor = "#ff2c2c"
+        }else if(element.Prio() == "Normal"){
+            node.style.backgroundColor = "#fcca42"
         }
         else if (element.Prio() == "Baixa") {
             node.style.backgroundColor = "lightgreen"
