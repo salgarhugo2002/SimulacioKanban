@@ -14,7 +14,7 @@ body{
 /* El CSS per a la capçalera. */
 #cabecera{
   background-color: black;
-  display: flex;
+  display: flex; 
   justify-content: center; 
   align-items: center; 
   background-image: url('./Imagenes/cabecera.jpg'); 
