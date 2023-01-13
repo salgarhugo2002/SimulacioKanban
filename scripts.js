@@ -2,12 +2,14 @@
 
 var todo = [];
 var codi = [1];
+var idresponsable = [1];
+var responsables = [];
 
 
 
 class Task {
 
-    constructor(_titols, _textp, _codip, data1, data, responsables, listas,prioridad) {
+    constructor(_titols, _textp, _codip, data1, data, responsables, listas, prioridad) {
         this._titol = _titols;
         this._text = _textp;
         this._codi = _codip;
@@ -58,9 +60,36 @@ class Task {
 
 
 }
+
+class Responsable {
+
+    constructor(_ids, _noms) {
+        _id = _ids;
+        _nom = _noms;
+
+    }
+    RetornId() {
+        return _id;
+    }
+    set Id(a) {
+        _id = a;
+    }
+
+    RetornNom() {
+        return _nom;
+    }
+    set Nom(a) {
+        _nom = a;
+    }
+}
+
 carregarlocal();
 function Generarid() {
     codi[0] = codi[0] + 1;
+}
+
+function GenerarIdResponsable() {
+    idresponsable[0] = idresponsable[0] + 1;
 }
 
 
@@ -90,10 +119,11 @@ function guardarToDo() {
 
                     document.getElementById("text1").value = null;
                     document.getElementById("titol1").value = null;
-                    let tasca = new Task(titol, dato, codi[0], data1, data, responsable, "ToDo" , prio);
+                    let tasca = new Task(titol, dato, codi[0], data1, data, retornideresponsable(responsable), "ToDo", prio);
                     Generarid();
 
                     todo.push(tasca);
+
 
                     mostrar();
                     guardarlocal();
@@ -111,7 +141,7 @@ function guardarToDo() {
 function validarTitol() {
 
     let bool = true;
-    for(element of todo){
+    for (element of todo) {
         if (element.RetornTitol() == document.getElementById("titol1").value) {
             bool = false;
             break;
@@ -122,7 +152,7 @@ function validarTitol() {
     };
 
 
-return bool;
+    return bool;
 }
 
 function mostrar() {
@@ -142,8 +172,8 @@ function mostrar() {
         }else if(element.Prio() == "Normal"){
             node.style.backgroundColor = "#fcca42"
         }
-        else if(element.Prio() == "Baixa"){
-            node.style.backgroundColor = "#28ddb0"
+        else if (element.Prio() == "Baixa") {
+            node.style.backgroundColor = "lightgreen"
         }
         cont++;
 
@@ -168,15 +198,15 @@ function eliminarToDo(text) {
     todo.forEach(element => {
         if (text.trim() == element.RetornTitol()) {
 
-            
+
             todo.splice(cont, 1);
-            
-        }else{
+
+        } else {
             cont++;
         }
 
     });
-    
+
     mostrar();
     guardarlocal();
 }
@@ -187,6 +217,8 @@ function guardarlocal() {
 
     localStorage.setItem('llista', JSON.stringify(todo));
     localStorage.setItem('id', JSON.stringify(codi));
+    localStorage.setItem('idresponsable', JSON.stringify(idresponsable));
+    localStorage.setItem('responsables', JSON.stringify(responsables))
 
 }
 
@@ -197,17 +229,30 @@ function carregarlocal() {
         if (localStorage.llista) {
             var data = [] = JSON.parse(localStorage.getItem('llista'));
             data.forEach(element => {
-                todo.push(new Task(element._titol, element._text, element._codi, element._data_creacio, element._data_previsio_finalitzacio, element._responsabl, element._Lista,element._prioridad));
+                todo.push(new Task(element._titol, element._text, element._codi, element._data_creacio, element._data_previsio_finalitzacio, element._responsabl, element._Lista, element._prioridad));
             });
-
-            if (localStorage.id)
-                codi = JSON.parse(localStorage.getItem('id'));
-
             mostrar();
         } else
             localStorage.setItem('llista', JSON.stringify(todo));
-        localStorage.setItem('id', JSON.stringify(codi));
 
+        if (localStorage.id)
+            codi = JSON.parse(localStorage.getItem('id'));
+        else
+            localStorage.setItem('id', JSON.stringify(codi));
+
+        if (localStorage.idresponsable)
+            idresponsable = JSON.parse(localStorage.getItem('idresponsable'));
+        else
+            localStorage.setItem('idresponsable', JSON.stringify(idresponsable));
+        if (localStorage.responsables) {
+
+         let dataresponsables=[] = JSON.parse(localStorage.getItem('responsables'))
+            dataresponsables.forEach(element => {
+                responsables.push(new Responsable(element._nom))
+            });
+        }
+        else
+            localStorage.setItem('responsables'), JSON.stringify(responsables)
     } else {
         alert("Sorry, your browser does not support web storage...");
 
@@ -221,7 +266,6 @@ document.getElementById("text1").addEventListener("keypress", function (event) {
         document.getElementById("btng").click();
     }
 })
-
 
 const dragToDo = document.getElementById('divToDo')
 const dragDoing = document.getElementById('divDoing')
@@ -331,33 +375,22 @@ dragDoing.addEventListener('drop', (e) => {
 
 })
 
-function CambiarLista(text, lista) {
+
+    <
 
 
-    todo.forEach(element => {
-        if (text.trim() == element.RetornTitol()) {
 
-            element.setLista(lista);
 
-            console.log(123421321)
-        }
+    papelera.addEventListener('dragstart', (e) => {
+        e.dataTransfer.setData('text/plain', e.target.id)
 
-    });
-
-    guardarlocal();
-
-}
-
-papelera.addEventListener('dragstart', (e) => {
-    e.dataTransfer.setData('text/plain', e.target.id)
-    
-})
+    })
 
 papelera.addEventListener('drag', (e) => {
     e.target.classList.add('active')
 })
 
-  papelera.addEventListener('dragend', (e) => {
+papelera.addEventListener('dragend', (e) => {
     e.target.classList.remove('active')
 })
 
@@ -372,21 +405,45 @@ papelera.addEventListener('drop', (e) => {
 
     a = element.innerHTML;
     eliminarToDo(a)
-    
+
 })
 
-$(document).ready(function(){
-    $('#btng').click(function(){
-        if($('#normal').is(':checked')){
-            $('.task').css('backgroundColor','blue');
-            
-        }else if($('#alta').is(':checked')){
-            $('.task').css('backgroundColor','red',);
+function CambiarLista(text, lista) {
 
-        }else if($('#baixa').is(':checked')){
-            $('.task').css('backgroundColor','gray');
+
+    todo.forEach(element => {
+        if (text.trim() == element.RetornTitol()) {
+
+            element.setLista(lista);
+
         }
-    })
-})
-    
 
+    });
+
+    guardarlocal();
+
+}
+
+
+
+function guardarresponsable() {
+    nom = document.getElementById('nomresponsable').value
+    id = GenerarIdResponsable();
+
+
+    let resp = new Responsable(nom, id)
+
+    responsables.push(resp);
+}
+
+function retornideresponsable(resp) {
+    let id = 0;
+    responsables.forEach(element => {
+        if (resp == element.RetornNom()) {
+            id = element.Retorncodi();
+        }
+
+    })
+    return id;
+
+}
