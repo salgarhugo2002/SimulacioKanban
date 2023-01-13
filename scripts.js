@@ -1,15 +1,12 @@
-
-
+/* Declaració de variables. */
 var todo = [];
 var codi = [1];
 var idresponsable = [1];
 var responsables = [];
 
-
-
-
+/* És una classe que crea un objecte de tasca amb un títol, text, codi, data de creació, data de venciment,
+responsable, llista i prioritat. */
 class Task {
-
     constructor(_titols, _textp, _codip, data1, data, responsables, listas, prioridad) {
         this._titol = _titols;
         this._text = _textp;
@@ -20,6 +17,7 @@ class Task {
         this._Lista = listas;
         this._prioridad = prioridad
     }
+
     RetornTitol() {
         return this._titol
     }
@@ -27,6 +25,7 @@ class Task {
     Retorncodi() {
         return this._codi;
     }
+
     set codi(codi2) {
         this.codi = codi2;
     }
@@ -43,7 +42,6 @@ class Task {
         return this._text;
     }
 
-
     RetornResponsable() {
         return this._responsable;
     }
@@ -58,20 +56,20 @@ class Task {
     Prio() {
         return this._prioridad
     }
-
-
 }
 
+/* Crea una classe anomenada Responsable. */
 class Responsable {
-
     constructor(_ids, _noms) {
         _id = _ids;
         _nom = _noms;
 
     }
+
     RetornId() {
         return _id;
     }
+
     set Id(a) {
         _id = a;
     }
@@ -79,24 +77,28 @@ class Responsable {
     RetornNom() {
         return _nom;
     }
+
     set Nom(a) {
         _nom = a;
     }
 }
 
+/* Carregant l'emmagatzematge local. */
 carregarlocal();
+
+/* Afegeix 1 al primer element de la matriu codi. */
 function Generarid() {
     codi[0] = codi[0] + 1;
 }
 
+/* Generar un nou ID per a la persona responsable. */
 function GenerarIdResponsable() {
     idresponsable[0] = idresponsable[0] + 1;
 }
 
-
-
+/* Agafa els valors dels inputs i crea una tasca nova, introduint-la a la matriu. */
 function guardarToDo() {
-
+    /* Try-catch que detecta si algun titol esta repetit o i ha algun cap buit. */
     try {
         let responsable = document.getElementById('resp').value
         let titol = document.getElementById("titol1").value;
@@ -105,11 +107,9 @@ function guardarToDo() {
         let data1 = new Date().toLocaleDateString();
         let prio = document.getElementById('pri').value
 
-
         if (!validarTitol()) {
             throw "No pots repetir titol";
-        } else {
-
+        }else {
             if (dato == "" || dato == null) {
                 throw "Inserta un text";
             }
@@ -117,30 +117,24 @@ function guardarToDo() {
                 if (titol == "" || titol == null) {
                     throw "Inserta un títol";
                 } else {
-
                     document.getElementById("text1").value = null;
                     document.getElementById("titol1").value = null;
                     let tasca = new Task(titol, dato, codi[0], data1, data, retornideresponsable(responsable), "ToDo", prio);
                     Generarid();
-
                     todo.push(tasca);
-
 
                     mostrar();
                     guardarlocal();
                 }
-
             }
         }
-
     } catch (err) {
         alert(err);
     }
-
 }
 
+/* Comprova si el títol de la tasca nova ja és a la llista de tasques. Retorna un valor booleà. */
 function validarTitol() {
-
     let bool = true;
     for (element of todo) {
         if (element.RetornTitol() == document.getElementById("titol1").value) {
@@ -152,10 +146,10 @@ function validarTitol() {
         }
     };
 
-
     return bool;
 }
 
+/* Crea un element de llista per a cada element de la matriu i l'afegeix a la llista adequada */
 function mostrar() {
     var node;
     document.getElementById('listaToDo').innerHTML = '';
@@ -188,18 +182,14 @@ function mostrar() {
 
             document.querySelector('#listaDone').appendChild(node);
         }
-
-
     });
-
 }
 
+/* Pren una cadena com a argument, i si aquesta cadena coincideix amb el títol d'un objecte de 'todo', elimina aquest objecte de la matriu de 'todo'.*/
 function eliminarToDo(text) {
     let cont = 0;
     todo.forEach(element => {
         if (text.trim() == element.RetornTitol()) {
-
-
             todo.splice(cont, 1);
 
         } else {
@@ -212,17 +202,14 @@ function eliminarToDo(text) {
     guardarlocal();
 }
 
-
-
+/* Pren les dades de la matriu 'todo', la variable codi i, les desa a l'emmagatzematge local. */
 function guardarlocal() {
 
     localStorage.setItem('llista', JSON.stringify(todo));
     localStorage.setItem('id', JSON.stringify(codi));
     localStorage.setItem('idresponsable', JSON.stringify(idresponsable));
-    localStorage.setItem('responsables', JSON.stringify(responsables))
-
+    localStorage.setItem('responsables', JSON.stringify(responsables));
 }
-
 
 function carregarlocal() {
     if (typeof (Storage) !== "undefined") {
@@ -233,14 +220,14 @@ function carregarlocal() {
                 todo.push(new Task(element._titol, element._text, element._codi, element._data_creacio, element._data_previsio_finalitzacio, element._responsabl, element._Lista, element._prioridad));
             });
             mostrar();
-        } else
+        }else{
             localStorage.setItem('llista', JSON.stringify(todo));
-
-        if (localStorage.id)
+        }
+        if (localStorage.id){
             codi = JSON.parse(localStorage.getItem('id'));
-        else
+        }else{
             localStorage.setItem('id', JSON.stringify(codi));
-
+        }
         if (localStorage.idresponsable)
             idresponsable = JSON.parse(localStorage.getItem('idresponsable'));
         else
@@ -258,9 +245,10 @@ function carregarlocal() {
         alert("Sorry, your browser does not support web storage...");
 
     }
-
 }
 
+/* Si es prem la tecla Intro, a continuació, activarà l'event 'clic al botó'
+amb l'id 'btng'. */
 document.getElementById("text1").addEventListener("keypress", function (event) {
     if (event.key === "Enter") {
         event.preventDefault();
@@ -268,6 +256,7 @@ document.getElementById("text1").addEventListener("keypress", function (event) {
     }
 })
 
+/* Creació de variables per als diferents divs i llistes. */
 const dragToDo = document.getElementById('divToDo')
 const dragDoing = document.getElementById('divDoing')
 const dragDone = document.getElementById('divDone')
@@ -275,6 +264,9 @@ const papelera = document.getElementById('papelera')
 const listaDoing = document.getElementById('listaDoing')
 const listaToDo = document.getElementById('listaToDo')
 const listaDone = document.getElementById('listaDone')
+
+
+/*CODI PER CREAR EL SISTEMA D'ARROSSEGAMENT DE LES TASQUES TODO */
 
 dragToDo.addEventListener('dragstart', (e) => {
     e.dataTransfer.setData('text/plain', e.target.id)
@@ -292,6 +284,19 @@ dragToDo.addEventListener('dragover', (e) => {
     e.preventDefault()
 })
 
+dragToDo.addEventListener('drop', (e) => {
+    e.preventDefault()
+    const element = document.getElementById(e.dataTransfer.getData('text'))
+    element.classList.remove('active')
+    listaToDo.appendChild(listaDoing.removeChild(element))
+
+    a = element.innerHTML;
+    CambiarLista(a, "ToDo")
+
+})
+
+
+/*CODI PER CREAR EL SISTEMA D'ARROSSEGAMENT DE LES TASQUES DOING */
 
 dragDoing.addEventListener('dragstart', (e) => {
     e.dataTransfer.setData('text/plain', e.target.id)
@@ -309,7 +314,19 @@ dragDoing.addEventListener('dragover', (e) => {
     e.preventDefault()
 })
 
+dragDoing.addEventListener('drop', (e) => {
+    e.preventDefault()
+    const element = document.getElementById(e.dataTransfer.getData('text'))
+    element.classList.remove('active')
+    listaDoing.appendChild(listaToDo.removeChild(element))
 
+    a = element.innerHTML;
+    CambiarLista(a, "Doing")
+
+})
+
+
+/*CODI PER CREAR EL SISTEMA D'ARROSSEGAMENT DE LES TASQUES DONE */
 
 dragDone.addEventListener('dragstart', (e) => {
     e.dataTransfer.setData('text/plain', e.target.id)
@@ -327,32 +344,6 @@ dragDone.addEventListener('dragover', (e) => {
     e.preventDefault()
 })
 
-
-
-
-
-dragDoing.addEventListener('drop', (e) => {
-    e.preventDefault()
-    const element = document.getElementById(e.dataTransfer.getData('text'))
-    element.classList.remove('active')
-    listaDoing.appendChild(listaToDo.removeChild(element))
-
-    a = element.innerHTML;
-    CambiarLista(a, "Doing")
-
-})
-
-dragToDo.addEventListener('drop', (e) => {
-    e.preventDefault()
-    const element = document.getElementById(e.dataTransfer.getData('text'))
-    element.classList.remove('active')
-    listaToDo.appendChild(listaDoing.removeChild(element))
-
-    a = element.innerHTML;
-    CambiarLista(a, "ToDo")
-
-})
-
 dragDone.addEventListener('drop', (e) => {
     e.preventDefault()
     const element = document.getElementById(e.dataTransfer.getData('text'))
@@ -364,18 +355,8 @@ dragDone.addEventListener('drop', (e) => {
 
 })
 
-dragDoing.addEventListener('drop', (e) => {
-    e.preventDefault()
-    const element = document.getElementById(e.dataTransfer.getData('text'))
-    element.classList.remove('active')
-    listaDoing.appendChild(listaDone.removeChild(element))
 
-
-    a = element.innerHTML;
-    CambiarLista(a, "Doing")
-
-})
-
+/*CODI PER CREAR EL SISTEMA D'ARROSSEGAMENT DE LES TASQUES A LA PAPERERA */
 
 papelera.addEventListener('dragstart', (e) => {
     e.dataTransfer.setData('text/plain', e.target.id)
@@ -409,18 +390,12 @@ function CambiarLista(text, lista) {
 
     todo.forEach(element => {
         if (text.trim() == element.RetornTitol()) {
-
             element.setLista(lista);
-
         }
-
     });
 
     guardarlocal();
-
 }
-
-
 
 function guardarresponsable() {
     nom = document.getElementById('nomresponsable').value
@@ -444,9 +419,6 @@ function retornideresponsable(resp) {
 
 }
 
-
-
 document.getElementById('PrevFinalitzacio').value = new Date().toISOString().split('T')[0]
-
 
 document.getElementById('PrevFinalitzacio').min = new Date().toISOString().split('T')[0]
