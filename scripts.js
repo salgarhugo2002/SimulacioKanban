@@ -376,18 +376,14 @@ papelera.addEventListener('drop', (e) => {
     $(document).ready(function(){
         $('#btng').click(function(){
             if($('#normal').is(':checked')){
+              $('.task').css('backgroundColor','#f1f1f1');
               
-              $('.task').css('backgroundColor','green')
-              
-            } else if($('#alta').is(':checked')){
-              
-              $('.task').css('backgroundColor','red')
+            }else if($('#alta').is(':checked')){
+              $('.task').css('backgroundColor','#ff3737');
+
             }else if($('#baixa').is(':checked')){
-              
-              $('.task').css('backgroundColor','grey')
+              $('.task').css('backgroundColor','#9ffaa4');
             }
-            
-            
         })
       })
     
