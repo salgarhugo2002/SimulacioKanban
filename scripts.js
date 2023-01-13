@@ -138,12 +138,12 @@ function mostrar() {
         node.className = "task"
         node.id = cont
         if (element.Prio() == "Alta") {
-            node.style.backgroundColor = "red"
+            node.style.backgroundColor = "#ff2c2c"
         }else if(element.Prio() == "Normal"){
-            node.style.backgroundColor = "cyan"
+            node.style.backgroundColor = "#fcca42"
         }
         else if(element.Prio() == "Baixa"){
-            node.style.backgroundColor = "lightgreen"
+            node.style.backgroundColor = "#28ddb0"
         }
         cont++;
 
@@ -331,8 +331,6 @@ dragDoing.addEventListener('drop', (e) => {
 
 })
 
-
-
 function CambiarLista(text, lista) {
 
 
@@ -349,8 +347,6 @@ function CambiarLista(text, lista) {
     guardarlocal();
 
 }
-
-
 
 papelera.addEventListener('dragstart', (e) => {
     e.dataTransfer.setData('text/plain', e.target.id)
@@ -379,21 +375,18 @@ papelera.addEventListener('drop', (e) => {
     
 })
 
- 
+$(document).ready(function(){
+    $('#btng').click(function(){
+        if($('#normal').is(':checked')){
+            $('.task').css('backgroundColor','blue');
+            
+        }else if($('#alta').is(':checked')){
+            $('.task').css('backgroundColor','red',);
 
-  
-    $(document).ready(function(){
-        $('#btng').click(function(){
-            if($('#normal').is(':checked')){
-              $('.task').css('backgroundColor','#f1f1f1');
-              
-            }else if($('#alta').is(':checked')){
-              $('.task').css('backgroundColor','#ff3737');
-
-            }else if($('#baixa').is(':checked')){
-              $('.task').css('backgroundColor','#9ffaa4');
-            }
-        })
-      })
+        }else if($('#baixa').is(':checked')){
+            $('.task').css('backgroundColor','gray');
+        }
+    })
+})
     
 
