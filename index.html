@@ -86,11 +86,11 @@
                     <textarea class="form-control" id="text1" style="background-color: beige;"></textarea>
                     <label for="message-text" class="col-form-label" style="font-size: 20px;">Prioritat</label>
                     <br>
-                    <fieldset id="pri">
-                      <input type="radio" name="pri" value="normal" > <label>Normal</label>
-                      <input type="radio" name="pri" value="alta" > <label>Alta</label>
-                      <input type="radio" name="pri" value="baixa" > <label>Baixa</label>
-                    </fieldset>
+                    <select name="pri" id="pri">
+                      <option value="Alta">Alta</option>
+                      <option value="Normal">Normal</option>
+                      <option value="Baixa">Baixa</option>
+                    </select>
                     
                     <br>
                     <input type="date" id="PrevFinalitzacio" name="trip-start" value="2022-12-02" min="2022-12-02"
