@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Lilita+One&display=swap');
 body{
-  background-color: beige !important;
+  background-image: url("./Imagenes/background.gif") !important;
+  background-size: cover;
 }
 
 .wrap {
@@ -38,9 +39,10 @@ img{
   min-width: 33%;
   min-height: 300px;
   display: block;
-  border: 5px solid red;
+  border: 5px solid rgb(97, 41, 41);
   text-align: center;
   box-shadow: 0px 10px 10px black;
+  background-color: rgb(190, 238, 186);
 }
 
 .col-md-3 > ol{
