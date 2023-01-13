@@ -376,11 +376,6 @@ dragDoing.addEventListener('drop', (e) => {
 })
 
 
-    <
-
-
-
-
     papelera.addEventListener('dragstart', (e) => {
         e.dataTransfer.setData('text/plain', e.target.id)
 
