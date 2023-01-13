@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Lilita+One&display=swap');
-body{
+
+body {
   background-image: url("./Imagenes/background.gif") !important;
   background-size: cover;
 }
@@ -16,26 +17,28 @@ body{
   align-self: flex-end;
 }
 
-img{
+img {
   width: 300px;
   height: 300px;
 }
-.container-fluid{
+
+.container-fluid {
  text-align: center;
  margin: auto;
  margin-bottom: 50px;
  
 }
 
-.container{
+.container {
   margin-top: 5px;
 }
 
-.row{
+.row {
   
   min-height: 300px;
 }
-.col-md-3{
+
+.col-md-3 {
   min-width: 33%;
   min-height: 300px;
   display: block;
@@ -45,17 +48,17 @@ img{
   background-color: rgb(190, 238, 186);
 }
 
-.col-md-3 > ol{
-  text-align:justify;
+.col-md-3>ol {
+  text-align: justify;
   word-wrap: break-word;
 }
 
-.grid{
-  margin-top:10px;
+.grid {
+  margin-top: 10px;
 }
 
 
-#inputs{
+#inputs {
   width: 40%;
   margin: auto;
   margin-top: 5px;
@@ -63,14 +66,16 @@ img{
 }
 
 
-.btns{
+.btns {
   border-radius: 5px;
   background-color: #2f89fc;
   font-size: 20px;
   width: 120px;
 }
-.btn:hover{
-  background-color: #4CAF50; /* Green */
+
+.btn:hover {
+  background-color: #4CAF50;
+  /* Green */
   color: white;
 }
 
@@ -120,7 +125,7 @@ img{
   color: #000;
 }
 
-div#divToDo > h1 {
+div#divToDo>h1 {
   position: relative;
   padding: 0;
   margin: 0;
@@ -133,12 +138,13 @@ div#divToDo > h1 {
   transition: all 0.4s ease 0s;
 }
 
-div#divToDo > h1 {
+div#divToDo>h1 {
   text-align: center;
   text-transform: uppercase;
   padding-bottom: 5px;
 }
-div#divToDo > h1:before {
+
+div#divToDo>h1:before {
   width: 28px;
   height: 5px;
   display: block;
@@ -149,7 +155,8 @@ div#divToDo > h1:before {
   margin-left: -14px;
   background-color: #b80000;
 }
-div#divToDo > h1:after {
+
+div#divToDo>h1:after {
   width: 100px;
   height: 1px;
   display: block;
@@ -161,12 +168,12 @@ div#divToDo > h1:after {
   background-color: #b80000;
 }
 
-::selection{
+::selection {
   background-color: #4c90af33;
 }
 
 
-div#divDoing > h1 {
+div#divDoing>h1 {
   position: relative;
   padding: 0;
   margin: 0;
@@ -179,12 +186,13 @@ div#divDoing > h1 {
   transition: all 0.4s ease 0s;
 }
 
-div#divDoing > h1 {
+div#divDoing>h1 {
   text-align: center;
   text-transform: uppercase;
   padding-bottom: 5px;
 }
-div#divDoing > h1:before {
+
+div#divDoing>h1:before {
   width: 28px;
   height: 5px;
   display: block;
@@ -195,7 +203,8 @@ div#divDoing > h1:before {
   margin-left: -14px;
   background-color: #b80000;
 }
-div#divDoing > h1:after {
+
+div#divDoing>h1:after {
   width: 100px;
   height: 1px;
   display: block;
@@ -208,7 +217,7 @@ div#divDoing > h1:after {
 }
 
 
-div#divDone > h1 {
+div#divDone>h1 {
   position: relative;
   padding: 0;
   margin: 0;
@@ -221,12 +230,13 @@ div#divDone > h1 {
   transition: all 0.4s ease 0s;
 }
 
-div#divDone > h1 {
+div#divDone>h1 {
   text-align: center;
   text-transform: uppercase;
   padding-bottom: 5px;
 }
-div#divDone > h1:before {
+
+div#divDone>h1:before {
   width: 28px;
   height: 5px;
   display: block;
@@ -237,7 +247,8 @@ div#divDone > h1:before {
   margin-left: -14px;
   background-color: #b80000;
 }
-div#divDone > h1:after {
+
+div#divDone>h1:after {
   width: 100px;
   height: 1px;
   display: block;
@@ -252,7 +263,7 @@ div#divDone > h1:after {
 
 
 
-.btn-light{
+.btn-light {
   background-color: #000 !important;
   float: right;
   position: relative;
@@ -260,11 +271,11 @@ div#divDone > h1:after {
   color: #2f89fc !important;
 }
 
-.btn-light:hover{
+.btn-light:hover {
   color: pink !important;
 }
 
-#papelera{
+#papelera {
   min-width: 120px;
   min-height: 100px;
   max-width: 120px;
@@ -274,7 +285,7 @@ div#divDone > h1:after {
 }
 
 
-#img-papelera{
+#img-papelera {
   transition: 0.5s;
 }
 #img-papelera:hover{

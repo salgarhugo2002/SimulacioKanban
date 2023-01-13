@@ -7,6 +7,7 @@ var responsables = [];
 
 
 
+
 class Task {
 
     constructor(_titols, _textp, _codip, data1, data, responsables, listas, prioridad) {
@@ -246,13 +247,13 @@ function carregarlocal() {
             localStorage.setItem('idresponsable', JSON.stringify(idresponsable));
         if (localStorage.responsables) {
 
-         let dataresponsables=[] = JSON.parse(localStorage.getItem('responsables'))
+            let dataresponsables = [] = JSON.parse(localStorage.getItem('responsables'))
             dataresponsables.forEach(element => {
                 responsables.push(new Responsable(element._nom))
             });
         }
         else
-            localStorage.setItem('responsables'), JSON.stringify(responsables)
+            localStorage.setItem('responsables', JSON.stringify(responsables))
     } else {
         alert("Sorry, your browser does not support web storage...");
 
@@ -442,3 +443,10 @@ function retornideresponsable(resp) {
     return id;
 
 }
+
+
+
+document.getElementById('PrevFinalitzacio').value = new Date().toISOString().split('T')[0]
+
+
+document.getElementById('PrevFinalitzacio').min = new Date().toISOString().split('T')[0]
