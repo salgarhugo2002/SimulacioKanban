@@ -377,10 +377,10 @@ dragDoing.addEventListener('drop', (e) => {
 })
 
 
-    papelera.addEventListener('dragstart', (e) => {
-        e.dataTransfer.setData('text/plain', e.target.id)
+papelera.addEventListener('dragstart', (e) => {
+    e.dataTransfer.setData('text/plain', e.target.id)
 
-    })
+})
 
 papelera.addEventListener('drag', (e) => {
     e.target.classList.add('active')
