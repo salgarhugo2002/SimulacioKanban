@@ -277,6 +277,7 @@ div#divDone > h1:after {
 #img-papelera{
   transition: 0.5s;
 }
+
 #img-papelera:hover{
   color: red;
 }

@@ -64,26 +64,30 @@ class Task {
 class Responsable {
 
     constructor(_ids, _noms) {
-        _id = _ids;
-        _nom = _noms;
+        this._id = _ids;
+        this._nom = _noms;
 
     }
     RetornId() {
-        return _id;
+        return this._id;
     }
     set Id(a) {
-        _id = a;
+        this._id = a;
     }
 
     RetornNom() {
-        return _nom;
+        return this._nom;
     }
     set Nom(a) {
-        _nom = a;
+        this._nom = a;
     }
 }
 
+
+
 carregarlocal();
+afegirUsuaris()
+
 function Generarid() {
     codi[0] = codi[0] + 1;
 }
@@ -177,7 +181,8 @@ function mostrar() {
         }
         cont++;
 
-        node.appendChild(document.createTextNode(element.RetornTitol() + " "));
+        node.appendChild(document.createTextNode(element.RetornTitol() + "." + " "));
+        node.appendChild(document.createTextNode(element.RetornTitol()));
 
         if (element.RetornLista() == "ToDo") {
             document.querySelector('#listaToDo').appendChild(node);
@@ -193,10 +198,12 @@ function mostrar() {
 
 }
 
-function eliminarToDo(text) {
+function eliminarToDo(text = "") {
     let cont = 0;
+    let pos = text.indexOf('.')
+    let text2 = text.substring(0, pos)
     todo.forEach(element => {
-        if (text.trim() == element.RetornTitol()) {
+        if (text2.trim() == element.RetornTitol()) {
 
 
             todo.splice(cont, 1);
@@ -246,13 +253,13 @@ function carregarlocal() {
             localStorage.setItem('idresponsable', JSON.stringify(idresponsable));
         if (localStorage.responsables) {
 
-         let dataresponsables=[] = JSON.parse(localStorage.getItem('responsables'))
+            let dataresponsables = [] = JSON.parse(localStorage.getItem('responsables'))
             dataresponsables.forEach(element => {
-                responsables.push(new Responsable(element._nom))
+                responsables.push(new Responsable(element._id,element._nom))
             });
         }
         else
-            localStorage.setItem('responsables'), JSON.stringify(responsables)
+            localStorage.setItem('responsables', JSON.stringify(responsables))
     } else {
         alert("Sorry, your browser does not support web storage...");
 
@@ -376,15 +383,14 @@ dragDoing.addEventListener('drop', (e) => {
 })
 
 
-    <
 
 
 
 
-    papelera.addEventListener('dragstart', (e) => {
-        e.dataTransfer.setData('text/plain', e.target.id)
+papelera.addEventListener('dragstart', (e) => {
+    e.dataTransfer.setData('text/plain', e.target.id)
 
-    })
+})
 
 papelera.addEventListener('drag', (e) => {
     e.target.classList.add('active')
@@ -408,11 +414,14 @@ papelera.addEventListener('drop', (e) => {
 
 })
 
-function CambiarLista(text, lista) {
+function CambiarLista(text = "", lista) {
+    let pos = text.indexOf('.')
 
+    let text2 = text.substring(0, pos)
+    text = text.trim()
 
     todo.forEach(element => {
-        if (text.trim() == element.RetornTitol()) {
+        if (text2 == element.RetornTitol()) {
 
             element.setLista(lista);
 
@@ -428,22 +437,64 @@ function CambiarLista(text, lista) {
 
 function guardarresponsable() {
     nom = document.getElementById('nomresponsable').value
-    id = GenerarIdResponsable();
+    GenerarIdResponsable();
 
 
-    let resp = new Responsable(nom, id)
+    let resp = new Responsable(idresponsable[0],nom)
+
 
     responsables.push(resp);
+    document.getElementById('nomresponsable').value = ""
+    guardarlocal()
+    afegirUsuaris()
 }
+
+
+
+function eliminarResponsable(){
+   let cont = 0
+    responsables.forEach(element =>{
+        if (element.RetornId() == parseInt(document.getElementById('borrarResp').value) ) {
+            responsables.splice(cont, 1);
+
+        } else {
+            cont++;
+        }
+    })
+    afegirUsuaris()
+    guardarlocal()
+}
+
 
 function retornideresponsable(resp) {
     let id = 0;
     responsables.forEach(element => {
         if (resp == element.RetornNom()) {
-            id = element.Retorncodi();
+            id = element.RetornId();
         }
 
     })
     return id;
 
 }
+
+function afegirUsuaris(){
+  
+    document.getElementById('resp').innerHTML = ""
+
+    responsables.forEach(element =>{
+
+        var responsables2 = document.getElementById('resp')
+        var txt = element.RetornNom()
+        var o = document.createElement("option")
+        o.text = txt
+        responsables2.add(o)
+        
+    })
+}
+
+
+document.getElementById('PrevFinalitzacio').value = new Date().toISOString().split('T')[0]
+
+
+document.getElementById('PrevFinalitzacio').min = new Date().toISOString().split('T')[0]
