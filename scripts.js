@@ -86,8 +86,8 @@ class Responsable {
 
 /* Carregant l'emmagatzematge local. */
 carregarlocal();
-/* Afegeix 1 al primer element de la matriu codi. */
-afegirUsuaris()
+
+
 
 function Generarid() {
     codi[0] = codi[0] + 1;
@@ -102,7 +102,7 @@ function GenerarIdResponsable() {
 /* Agafa els valors dels inputs i crea una tasca nova, introduint-la a la matriu. */
 
 function guardarToDo() {
-    /* Try-catch que detecta si algun titol esta repetit o i ha algun cap buit. */
+    /* Try-catch que detecta si algun titol esta repetit o i ha algun camp buit. */
 
     try {
         let responsable = document.getElementById('resp').value
@@ -224,7 +224,7 @@ function eliminarToDo(text = "") {
     guardarlocal();
 }
 
-/* Pren les dades de la matriu 'todo', la variable codi i, les desa a l'emmagatzematge local. */
+/* Pren les dades de la matriu 'todo', la variable codi , la matriu responsables i la variable de identificaciò i les desa a l'emmagatzematge en local. */
 
 function guardarlocal() {
 
@@ -270,7 +270,8 @@ function carregarlocal() {
         alert("Sorry, your browser does not support web storage...");
 
     }
-
+    /* Carrega els responsables creats i enmagatzemats en el localstorage */
+    afegirUsuaris()
 }
 /* Si es prem la tecla Intro, a continuació, activarà l'event 'clic al botó'
 amb l'id 'btng'. */
@@ -347,7 +348,7 @@ dragDone.addEventListener('dragover', (e) => {
 
 
 
-/*CODI PER CREAR EL SISTEMA D'ARROSSEGAMENT DE LES TASQUES A LA PAPERERA */
+
 dragDoing.addEventListener('drop', (e) => {
     e.preventDefault()
     const element = document.getElementById(e.dataTransfer.getData('text'))
@@ -396,7 +397,7 @@ dragDoing.addEventListener('drop', (e) => {
 
 
 
-
+/*CODI PER CREAR EL SISTEMA D'ARROSSEGAMENT DE LES TASQUES A LA PAPERERA */
 
 papelera.addEventListener('dragstart', (e) => {
     e.dataTransfer.setData('text/plain', e.target.id)
@@ -425,6 +426,9 @@ papelera.addEventListener('drop', (e) => {
 
 })
 
+
+/* Funcio per cambiar l'atribut llista de la classe responsable depenguen d'on es mogui el element */
+
 function CambiarLista(text = "", lista) {
     let pos = text.indexOf('.')
 
@@ -445,7 +449,7 @@ function CambiarLista(text = "", lista) {
 }
 
 
-
+/*Funcio que agafa la informacio dels inputs crea i guarda un objecte de la classe responsable */
 function guardarresponsable() {
     nom = document.getElementById('nomresponsable').value
     GenerarIdResponsable();
@@ -461,7 +465,7 @@ function guardarresponsable() {
 }
 
 
-
+/* /*Funcio que agafa la informacio dels inputs elimina un objecte de la classe responsable */
 function eliminarResponsable(){
    let cont = 0
     responsables.forEach(element =>{
@@ -476,7 +480,7 @@ function eliminarResponsable(){
     guardarlocal()
 }
 
-
+/*Funcio que a traves d'un nom et torna la id d'aquell responsable */
 function retornideresponsable(resp) {
     let id = 0;
     responsables.forEach(element => {
@@ -488,7 +492,7 @@ function retornideresponsable(resp) {
     return id;
 
 }
-
+/*Funcio que mostra en el camp select de la creacio de tasca tots els responsables creats */
 function afegirUsuaris(){
   
     document.getElementById('resp').innerHTML = ""
@@ -504,8 +508,6 @@ function afegirUsuaris(){
     })
 }
 
-
+/*Codi per la modificacio automatica del camp min i value del calendari */
 document.getElementById('PrevFinalitzacio').value = new Date().toISOString().split('T')[0]
-
-
 document.getElementById('PrevFinalitzacio').min = new Date().toISOString().split('T')[0]
