@@ -385,9 +385,8 @@ papelera.addEventListener('drop', (e) => {
 
 })
 
+/* Funció que agafa el títol i la llista d'un element i el canvia a una altra llista */
 function CambiarLista(text, lista) {
-
-
     todo.forEach(element => {
         if (text.trim() == element.RetornTitol()) {
             element.setLista(lista);
@@ -397,6 +396,7 @@ function CambiarLista(text, lista) {
     guardarlocal();
 }
 
+/* Funció que serveix per guardar els responsables */
 function guardarresponsable() {
     nom = document.getElementById('nomresponsable').value
     id = GenerarIdResponsable();
@@ -407,6 +407,7 @@ function guardarresponsable() {
     responsables.push(resp);
 }
 
+/* Funció que retorna l'id del responsable */
 function retornideresponsable(resp) {
     let id = 0;
     responsables.forEach(element => {
@@ -416,9 +417,8 @@ function retornideresponsable(resp) {
 
     })
     return id;
-
 }
 
+/* Calendari */
 document.getElementById('PrevFinalitzacio').value = new Date().toISOString().split('T')[0]
-
 document.getElementById('PrevFinalitzacio').min = new Date().toISOString().split('T')[0]
