@@ -35,8 +35,9 @@
     <div class="row">
       <!-- Div que contiene el titulo de de la columna ToDo. -->
       <div class="col-md-3" id="divToDo">
-        <h1 style="font-family: 'Gloria Hallelujah', cursive;">ToDo <!-- Icono importado de Bootstrap. --> <svg xmlns="http://www.w3.org/2000/svg" width="35"
-            height="35" fill="currentColor" class="bi bi-list-ol" viewBox="0 0 16 16">
+        <h1 style="font-family: 'Gloria Hallelujah', cursive;">ToDo <!-- Icono importado de Bootstrap. --> <svg
+            xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-list-ol"
+            viewBox="0 0 16 16">
             <path fill-rule="evenodd"
               d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5z" />
             <path
@@ -47,8 +48,9 @@
       </div>
       <!-- Div que contiene el titulo de de la columna Doing. -->
       <div class="col-md-3" id="divDoing">
-        <h1 style="font-family: 'Gloria Hallelujah', cursive;">Doing <!-- Icono importado de Bootstrap. --> <svg xmlns="http://www.w3.org/2000/svg" width="30"
-            height="30" fill="currentColor" class="bi bi-pen-fill" viewBox="0 0 16 16">
+        <h1 style="font-family: 'Gloria Hallelujah', cursive;">Doing <!-- Icono importado de Bootstrap. --> <svg
+            xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-pen-fill"
+            viewBox="0 0 16 16">
             <path
               d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001z" />
           </svg></h1>
@@ -57,12 +59,13 @@
       </div>
       <!-- Div que contiene el titulo de de la columna Doing. -->
       <div class="col-md-3" id="divDone">
-        <h1 style="font-family: 'Gloria Hallelujah', cursive;">Done <!-- Icono importado de Bootstrap. --> <svg xmlns="http://www.w3.org/2000/svg" width="30"
-            height="30" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+        <h1 style="font-family: 'Gloria Hallelujah', cursive;">Done <!-- Icono importado de Bootstrap. --> <svg
+            xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+            class="bi bi-check-circle-fill" viewBox="0 0 16 16">
             <path
               d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
           </svg></h1>
-          <!-- Lista de la columna Done donde irán las futuras tareas (la hacemos draggable para poder arrastrar las tareas). -->
+        <!-- Lista de la columna Done donde irán las futuras tareas (la hacemos draggable para poder arrastrar las tareas). -->
         <ol id="listaDone" draggable="true"></ol>
       </div>
     </div>
@@ -70,17 +73,12 @@
   <br>
   <div class="grid text-center">
     <div class="g-col-4">
-
-
       <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
         data-bs-whatever="@getbootstrap">Afegir tasca</button>
-
       <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal2"
         data-bs-whatever="@getbootstrap">Crear Responsable</button>
-
       <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal3"
         data-bs-whatever="@getbootstrap">Eliminar Responsable</button>
-
       <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -94,8 +92,6 @@
                 <div class="form-floating">
                   <select class="form-select" id="resp" aria-label="Disabled select example"
                     style="background-color: beige;">
-                   
-                    
                   </select>
                   <label for="resp">Escull un responsable</label>
                 </div>
@@ -129,13 +125,6 @@
           </div>
         </div>
       </div>
-
-
-
-
-
-
-
       <div class="grid text-center">
         <div class="g-col-4">
 
@@ -149,10 +138,9 @@
                 </div>
                 <div class="modal-body" style="background-color: rgb(252, 252, 241);">
                   <form>
-
-
                     <label for="message-text" class="col-form-label" style="font-size: 20px;">Nom Responsable</label>
-                    <input type="text" class="form-control" id="nomresponsable" style="background-color: beige;"></input>
+                    <input type="text" class="form-control" id="nomresponsable"
+                      style="background-color: beige;"></input>
                   </form>
                 </div>
                 <div class="modal-footer d-flex justify-content-center" style="background-color: rgb(252, 252, 241);">
@@ -167,10 +155,6 @@
             </div>
           </div>
         </div>
-
-
-
-
         <div class="grid text-center">
           <div class="g-col-4">
 
@@ -184,15 +168,13 @@
                   </div>
                   <div class="modal-body" style="background-color: rgb(252, 252, 241);">
                     <form>
-
-
                       <label for="message-text" class="col-form-label" style="font-size: 20px;">Nom Responsable</label>
                       <input type="text" class="form-control" id="borrarResp" style="background-color: beige;"></input>
                     </form>
                   </div>
                   <div class="modal-footer d-flex justify-content-center" style="background-color: rgb(252, 252, 241);">
-                    <button type="button" class="btn btn-outline-primary" style="width: 100px;"
-                      id="eliminarresponsable" onclick="eliminarResponsable()"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
+                    <button type="button" class="btn btn-outline-primary" style="width: 100px;" id="eliminarresponsable"
+                      onclick="eliminarResponsable()"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
                         fill="currentColor" class="bi bi-send" viewBox="0 0 16 16">
                         <path
                           d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z" />
@@ -202,9 +184,6 @@
               </div>
             </div>
           </div>
-
-
-
           <div id="papelera" class="container-fluid d-flex align-items-center justify-content-center">
             <svg xmlns="http://www.w3.org/2000/svg" id="img-papelera" width="100" height="100" fill="currentColor"
               class="bi bi-trash btn" data-bs-toggle="modal" href="#exampleModalToggle" role="button"
@@ -233,20 +212,20 @@
                       Per esborrar un element de la llista, arrossega'l cap a la paperera
                     </div>
                   </div>
-
                 </div>
               </div>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-
-
-
-          <script src="./scripts.js"></script>
-
-          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
-            </script>
+  <script src="./scripts.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
+    </script>
 
 </body>
+
 </html>
