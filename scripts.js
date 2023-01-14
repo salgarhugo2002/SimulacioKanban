@@ -198,9 +198,12 @@ function mostrar() {
         node.appendChild(document.createTextNode(" ID: "  + element.Retorncodi()));
         node.appendChild(document.createElement('br'))
         responsables.forEach(e =>{
-            if (element.RetornResponsable() == e.RetornId()) {
+            
+            if (element.RetornResponsable()  == e.RetornId() ) {
+                
                 node.appendChild(document.createTextNode(" Responsable: "  + e.RetornNom()));
             }
+
         })
         node.appendChild(document.createElement('br'))
         node.appendChild(document.createTextNode("Data Final: " + element.ReturnDataFinal() + " "));
@@ -257,9 +260,9 @@ function carregarlocal() {
         if (localStorage.llista) {
             var data = [] = JSON.parse(localStorage.getItem('llista'));
             data.forEach(element => {
-                todo.push(new Task(element._titol, element._text, element._codi, element._data_creacio, element._data_previsio_finalitzacio, element._responsabl, element._Lista, element._prioridad));
+                todo.push(new Task(element._titol, element._text, element._codi, element._data_creacio, element._data_previsio_finalitzacio, element._responsable, element._Lista, element._prioridad));
             });
-            mostrar();
+            
         } else
             localStorage.setItem('llista', JSON.stringify(todo));
 
@@ -281,6 +284,7 @@ function carregarlocal() {
         }
         else
             localStorage.setItem('responsables', JSON.stringify(responsables))
+            mostrar();
     } else {
         alert("Sorry, your browser does not support web storage...");
 
