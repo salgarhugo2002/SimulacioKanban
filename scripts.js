@@ -58,6 +58,10 @@ class Task {
         return this._prioridad
     }
 
+    ReturnDataFinal(){
+        return this._data_previsio_finalitzacio
+    }
+
 
 }
 /* Crea una classe anomenada Responsable. */
@@ -187,8 +191,19 @@ function mostrar() {
         }
         cont++;
 
-        node.appendChild(document.createTextNode(element.RetornTitol() + "." + " "));
-        node.appendChild(document.createTextNode(element.RetornTitol()));
+        node.appendChild(document.createTextNode(element.RetornTitol() + "." ));
+        node.appendChild(document.createElement('br'))
+        node.appendChild(document.createTextNode("Tasca: " + element.RetornText()));
+        node.appendChild(document.createElement('br'))
+        node.appendChild(document.createTextNode(" ID: "  + element.Retorncodi()));
+        node.appendChild(document.createElement('br'))
+        responsables.forEach(e =>{
+            if (element.RetornResponsable() == e.RetornId()) {
+                node.appendChild(document.createTextNode(" Responsable: "  + e.RetornNom()));
+            }
+        })
+        node.appendChild(document.createElement('br'))
+        node.appendChild(document.createTextNode("Data Final: " + element.ReturnDataFinal() + " "));
 
         if (element.RetornLista() == "ToDo") {
             document.querySelector('#listaToDo').appendChild(node);
