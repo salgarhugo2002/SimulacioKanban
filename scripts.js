@@ -202,6 +202,8 @@ function mostrar() {
             if (element.RetornResponsable()  == e.RetornId() ) {
                 
                 node.appendChild(document.createTextNode(" Responsable: "  + e.RetornNom()));
+                node.appendChild(document.createElement('br'))
+                node.appendChild(document.createTextNode("Responsable id: "  + e.RetornId()));
             }
 
         })
