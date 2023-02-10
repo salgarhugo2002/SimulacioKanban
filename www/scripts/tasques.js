@@ -1,5 +1,5 @@
 /* Agafa els valors dels inputs i crea una tasca nova, introduint-la a la matriu. */
-
+const BaseUrlTasca = "http://localhost:3000/api/tasca";
 function guardarToDo() {
     /* Try-catch que detecta si algun titol esta repetit o i ha algun camp buit. */
 
@@ -29,11 +29,27 @@ function guardarToDo() {
                     let tasca = new Task(titol, dato, codi[0], data1, data, retornideresponsable(responsable), "ToDo", prio);
                     Generarid();
 
+                    
+    
+                    let tasca1 = {
+                        "_titol" : titol,
+                        "_text" : dato,
+                        "_codi" : codi[0],
+                        "_data_creacio" : data1,
+                        "_data_previsio_finalitzacio" : data,
+                        "_responsable" : retornideresponsable(responsable),
+                        "_Lista" : "ToDo",
+                        "_prioridad" : prio
+                    }
+                
+                    
                     todo.push(tasca);
 
 
                     mostrar();
                     guardarlocal();
+                    return tasca1
+
                 }
 
             }
@@ -42,7 +58,7 @@ function guardarToDo() {
     } catch (err) {
         alert(err);
     }
-
+    
 }
 
 /* Comprova si el títol de la tasca nova ja és a la llista de tasques. Retorna un valor booleà. */
@@ -104,3 +120,22 @@ function CambiarLista(text = "", lista) {
     });
     guardarlocal();
 }
+
+
+function afegirTasca() {
+	
+	/*Obtenir dades del formulari*/
+    const tasca = guardarToDo();
+   
+	fetch(BaseUrlTasca, 
+    {
+        method: "POST",
+        body: JSON.stringify(tasca),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })  
+}
+
+
+

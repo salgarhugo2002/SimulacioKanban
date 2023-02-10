@@ -1,8 +1,11 @@
 const mongoose = require("mongoose");
 
 const TascaSchema = new mongoose.Schema({
-    _Lista: {
-        type: String
+    _titol:{
+        type:String
+    },
+    _text:{
+        type:String
     },
     _codi: {
         type: Number
@@ -13,18 +16,19 @@ const TascaSchema = new mongoose.Schema({
     _data_previsio_finalitzacio:{
         type:String
     },
-    _prioridad:{
-        type:String
-    },
     _responsable:{
         type:Number
     },
-    _text:{
-        type:String
+    _Lista: {
+        type: String
     },
-    _titol:{
+    
+    _prioridad:{
         type:String
     }
+    
+   
+    
     
 },
 {
