@@ -103,9 +103,6 @@ function GenerarIdResponsable() {
     idresponsable[0] = idresponsable[0] + 1;
 }
 
-
-
-
 /* Crea un element de llista per a cada element de la matriu i l'afegeix a la llista adequada */
 
 function mostrar() {
@@ -162,10 +159,6 @@ function mostrar() {
     });
 
 }
-
-
-
-
 
 
 /* Si es prem la tecla Intro, a continuació, activarà l'event 'clic al botó'
@@ -290,8 +283,6 @@ dragDoing.addEventListener('drop', (e) => {
 })
 
 
-
-
 /*CODI PER CREAR EL SISTEMA D'ARROSSEGAMENT DE LES TASQUES A LA PAPERERA */
 
 papelera.addEventListener('dragstart', (e) => {
@@ -320,24 +311,6 @@ papelera.addEventListener('drop', (e) => {
     eliminarToDo(a)
 
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-document.getElementById('enviarResponsable').addEventListener('click',afegirResponsable)
-
-
-
-
 
 /*Codi per la modificacio automatica del camp min i value del calendari */
 document.getElementById('PrevFinalitzacio').value = new Date().toISOString().split('T')[0]
