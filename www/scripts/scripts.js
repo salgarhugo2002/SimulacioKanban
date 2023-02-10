@@ -1,6 +1,5 @@
 /* Declaració de variables. */
 
-
 var todo = [];
 var codi = [1];
 var idresponsable = [1];
@@ -105,70 +104,8 @@ function GenerarIdResponsable() {
 }
 
 
-/* Agafa els valors dels inputs i crea una tasca nova, introduint-la a la matriu. */
-
-function guardarToDo() {
-    /* Try-catch que detecta si algun titol esta repetit o i ha algun camp buit. */
-
-    try {
-        let responsable = document.getElementById('resp').value
-        let titol = document.getElementById("titol1").value;
-        let dato = document.getElementById("text1").value;
-        let data = new Date(document.getElementById("PrevFinalitzacio").value).toLocaleDateString();
-        let data1 = new Date().toLocaleDateString();
-        let prio = document.getElementById('pri').value
 
 
-        if (!validarTitol()) {
-            throw "No pots repetir titol";
-        } else {
-
-            if (dato == "" || dato == null) {
-                throw "Inserta un text";
-            }
-            else {
-                if (titol == "" || titol == null) {
-                    throw "Inserta un títol";
-                } else {
-
-                    document.getElementById("text1").value = null;
-                    document.getElementById("titol1").value = null;
-                    let tasca = new Task(titol, dato, codi[0], data1, data, retornideresponsable(responsable), "ToDo", prio);
-                    Generarid();
-
-                    todo.push(tasca);
-
-
-                    mostrar();
-                    guardarlocal();
-                }
-
-            }
-        }
-
-    } catch (err) {
-        alert(err);
-    }
-
-}
-/* Comprova si el títol de la tasca nova ja és a la llista de tasques. Retorna un valor booleà. */
-
-function validarTitol() {
-
-    let bool = true;
-    for (element of todo) {
-        if (element.RetornTitol() == document.getElementById("titol1").value) {
-            bool = false;
-            break;
-        }
-        else {
-            bool = true;
-        }
-    };
-
-
-    return bool;
-}
 /* Crea un element de llista per a cada element de la matriu i l'afegeix a la llista adequada */
 
 function mostrar() {
@@ -226,76 +163,11 @@ function mostrar() {
 
 }
 
-function eliminarToDo(text = "") {
-    let cont = 0;
-    let pos = text.indexOf('.')
-    let text2 = text.substring(0, pos)
-    todo.forEach(element => {
-        if (text2.trim() == element.RetornTitol()) {
 
 
-            todo.splice(cont, 1);
-
-        } else {
-            cont++;
-        }
-
-    });
-
-    mostrar();
-    guardarlocal();
-}
-
-/* Pren les dades de la matriu 'todo', la variable codi , la matriu responsables i la variable de identificaciò i les desa a l'emmagatzematge en local. */
-
-function guardarlocal() {
-
-    localStorage.setItem('llista', JSON.stringify(todo));
-    localStorage.setItem('id', JSON.stringify(codi));
-    localStorage.setItem('idresponsable', JSON.stringify(idresponsable));
-    localStorage.setItem('responsables', JSON.stringify(responsables))
-
-}
 
 
-function carregarlocal() {
-    if (typeof (Storage) !== "undefined") {
 
-        if (localStorage.llista) {
-            var data = [] = JSON.parse(localStorage.getItem('llista'));
-            data.forEach(element => {
-                todo.push(new Task(element._titol, element._text, element._codi, element._data_creacio, element._data_previsio_finalitzacio, element._responsable, element._Lista, element._prioridad));
-            });
-            
-        } else
-            localStorage.setItem('llista', JSON.stringify(todo));
-
-        if (localStorage.id)
-            codi = JSON.parse(localStorage.getItem('id'));
-        else
-            localStorage.setItem('id', JSON.stringify(codi));
-
-        if (localStorage.idresponsable)
-            idresponsable = JSON.parse(localStorage.getItem('idresponsable'));
-        else
-            localStorage.setItem('idresponsable', JSON.stringify(idresponsable));
-        if (localStorage.responsables) {
-
-            let dataresponsables = [] = JSON.parse(localStorage.getItem('responsables'))
-            dataresponsables.forEach(element => {
-                responsables.push(new Responsable(element._id,element._nom))
-            });
-        }
-        else
-            localStorage.setItem('responsables', JSON.stringify(responsables))
-            mostrar();
-    } else {
-        alert("Sorry, your browser does not support web storage...");
-
-    }
-    /* Carrega els responsables creats i enmagatzemats en el localstorage */
-    afegirUsuaris()
-}
 /* Si es prem la tecla Intro, a continuació, activarà l'event 'clic al botó'
 amb l'id 'btng'. */
 document.getElementById("text1").addEventListener("keypress", function (event) {
@@ -450,126 +322,22 @@ papelera.addEventListener('drop', (e) => {
 })
 
 
-/* Funcio per cambiar l'atribut llista de la classe responsable depenguen d'on es mogui el element */
-
-function CambiarLista(text = "", lista) {
-    let pos = text.indexOf('.')
-
-    let text2 = text.substring(0, pos)
-    text = text.trim()
-
-    todo.forEach(element => {
-        if (text2 == element.RetornTitol()) {
-
-            element.setLista(lista);
-
-        }
-
-    });
-
-    guardarlocal();
-
-}
 
 
-/*Funcio que agafa la informacio dels inputs crea i guarda un objecte de la classe responsable */
-/*function guardarresponsable() {
-    nom = document.getElementById('nomresponsable').value
-    GenerarIdResponsable();
 
 
-    let resp = new Responsable(idresponsable[0],nom)
 
 
-    responsables.push(resp);
-    document.getElementById('nomresponsable').value = ""
-    guardarlocal()
-    afegirUsuaris()
-}*/
 
-const BaseUrl = "http://localhost:3000/api/responsable";
-function afegirResponsable() {
-	
-	/*Obtenir dades del formulari*/
-    const responsable = ObtenirDadesForm();
-   
-	fetch(BaseUrl, 
-    {
-        method: "POST",
-        body: JSON.stringify(responsable),
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    })
-   
-    
-        
-}
+
+
+
 
 document.getElementById('enviarResponsable').addEventListener('click',afegirResponsable)
 
-function ObtenirDadesForm() {
-    let myForm = document.getElementById("formResponsables");
-    
-    let responsable = {
-        "id" : idresponsable[0],
-        "nom": myForm.nom.value
-    }
-
-    GenerarIdResponsable()
-    let resp = new Responsable(idresponsable[0],myForm.nom.value)
-
-    responsables.push(resp);
-   
-    afegirUsuaris()
-    return responsable
-
-    
-}
 
 
-/* /*Funcio que agafa la informacio dels inputs elimina un objecte de la classe responsable */
-function eliminarResponsable(){
-   let cont = 0
-    responsables.forEach(element =>{
-        if (element.RetornId() == parseInt(document.getElementById('borrarResp').value) ) {
-            responsables.splice(cont, 1);
 
-        } else {
-            cont++;
-        }
-    })
-    afegirUsuaris()
-    guardarlocal()
-}
-
-/*Funcio que a traves d'un nom et torna la id d'aquell responsable */
-function retornideresponsable(resp) {
-    let id = 0;
-    responsables.forEach(element => {
-        if (resp == element.RetornNom()) {
-            id = element.RetornId();
-        }
-
-    })
-    return id;
-
-}
-/*Funcio que mostra en el camp select de la creacio de tasca tots els responsables creats */
-function afegirUsuaris(){
-  
-    document.getElementById('resp').innerHTML = ""
-
-    responsables.forEach(element =>{
-
-        var responsables2 = document.getElementById('resp')
-        var txt = element.RetornNom()
-        var o = document.createElement("option")
-        o.text = txt
-        responsables2.add(o)
-        
-    })
-}
 
 /*Codi per la modificacio automatica del camp min i value del calendari */
 document.getElementById('PrevFinalitzacio').value = new Date().toISOString().split('T')[0]
