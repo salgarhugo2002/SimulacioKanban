@@ -14,6 +14,18 @@ module.exports = (app) => {
        }
     });
 
+
+    app.get('/api/idmax', async (req, res) => {
+
+        const responsable = await responsableModel.find().select("id").sort({id: -1}).limit(1);
+
+       try {
+            res.status(200).send(responsable);
+       } catch (error) {
+            res.status(500).send(error);
+       }
+    });
+
     app.post('/api/responsable', async (req, res) => {
         const responsable = new responsableModel(req.body);
         
