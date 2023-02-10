@@ -508,45 +508,25 @@ function afegirResponsable() {
 
 document.getElementById('enviarResponsable').addEventListener('click',afegirResponsable)
 
-//function ObtenirDadesForm() {
-    // let myForm = document.getElementById("formResponsables");
-    
-    // let responsable = {
-    //     "id" : idresponsable[0],
-    //     "nom": myForm.nom.value
-    // }
-
-    // GenerarIdResponsable()
-    // let resp = new Responsable(idresponsable[0],myForm.nom.value)
-
-    // responsables.push(resp);
-   
-    // afegirUsuaris()
-    // return responsable
-
-    
-//}
-
-async function ObtenirDadesForm() {
+function ObtenirDadesForm() {
     let myForm = document.getElementById("formResponsables");
-  
-    const response = await fetch(BaseUrl);
-    const responsables = await response.json();
-  
-    let maxId = 0;
-    responsables.forEach(responsable => {
-      if (responsable.id > maxId) {
-        maxId = responsable.id;
-      }
-    });
-  
+    
     let responsable = {
-      "id": maxId + 1,
-      "nom": myForm.nom.value
-    };
-  
-    return responsable;
-  }
+        "id" : idresponsable[0],
+        "nom": myForm.nom.value
+    }
+
+    GenerarIdResponsable()
+    let resp = new Responsable(idresponsable[0],myForm.nom.value)
+
+    responsables.push(resp);
+   
+    afegirUsuaris()
+    return responsable
+
+    
+}
+
 
 /* /*Funcio que agafa la informacio dels inputs elimina un objecte de la classe responsable */
 function eliminarResponsable(){
