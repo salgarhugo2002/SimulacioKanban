@@ -38,4 +38,43 @@ module.exports = (app) => {
         }
     });
 }
+
+
+
+
+
+/**
+ * Creando rutas para TASCA
+ */
+
+
+const tascaModel = require("./models/tasques");
+
+
+module.exports = (app) => {
+    
+    app.get('/api/tasca', async (req, res) => {
+
+        const tasca = await tascaModel.find({});
+
+       try {
+            res.status(200).send(tasca);
+       } catch (error) {
+            res.status(500).send(error);
+       }
+    });
+
+
+    app.post('/api/tasca', async (req, res) => {
+        const tasca = new tascaModel(req.body);
+        
+        try {
+            await tasca.save(); 
+            const respon = await tascaModel.find({});   
+            res.status(200).send(respon);
+        } catch (error) {
+            res.status(500).send(error);
+        }
+    });
+}
     
