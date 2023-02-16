@@ -126,15 +126,21 @@ function afegirTasca() {
 	
 	/*Obtenir dades del formulari*/
     const tasca = guardarToDo();
-   
-	fetch(BaseUrlTasca, 
-    {
-        method: "POST",
-        body: JSON.stringify(tasca),
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    })  
+    
+    if (tasca != undefined) {
+        fetch(BaseUrlTasca, 
+            {
+                method: "POST",
+                body: JSON.stringify(tasca),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })  
+    }else{
+        alert("Hi han dades sense definr")
+    }
+
+	
 }
 
 
