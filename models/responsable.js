@@ -3,7 +3,8 @@ const mongoose = require("mongoose");
 const ResponsableSchema = new mongoose.Schema({
     id: {
         type: Number,
-        required: false
+        required: false,
+        default: 0
     },
     nom: {
         type: String,
