@@ -1,7 +1,7 @@
 
 /* Agafa els valors dels inputs i crea una tasca nova, introduint-la a la matriu. */
 const BaseUrlTasca = "http://localhost:3000/api/tasca";
-function guardarToDo() {
+async function guardarToDo() {
     /* Try-catch que detecta si algun titol esta repetit o i ha algun camp buit. */
 
     try {
@@ -11,6 +11,7 @@ function guardarToDo() {
         let data = new Date(document.getElementById("PrevFinalitzacio").value).toLocaleDateString();
         let data1 = new Date().toLocaleDateString();
         let prio = document.getElementById('pri').value
+        let codiiii = await idmaxtasques();
 
 
         if (!validarTitol()) {
@@ -27,15 +28,13 @@ function guardarToDo() {
 
                     document.getElementById("text1").value = null;
                     document.getElementById("titol1").value = null;
-                    let tasca = new Task(titol, dato, codi[0], data1, data, retornideresponsable(responsable), "ToDo", prio);
-                    Generarid();
-
-
+                    let tasca = new Task(titol, dato, codiiii, data1, data, retornideresponsable(responsable), "ToDo", prio);
+                    
 
                     let tasca1 = {
                         "_titol": titol,
                         "_text": dato,
-                        "_codi": codi[0],
+                        "_codi": codiiii ,
                         "_data_creacio": data1,
                         "_data_previsio_finalitzacio": data,
                         "_responsable": retornideresponsable(responsable),
@@ -48,7 +47,6 @@ function guardarToDo() {
 
 
                     mostrar();
-                    guardarlocal();
                     return tasca1
 
                 }
@@ -123,30 +121,30 @@ function CambiarLista(text = "", lista) {
 }
 
 
-function afegirTasca() {
+async function afegirTasca() {
 
     /*Obtenir dades del formulari*/
-    const tasca = guardarToDo();
-    
+    const tasca = await guardarToDo();
+
     if (tasca != undefined) {
-        fetch(BaseUrlTasca, 
+        fetch(BaseUrlTasca,
             {
                 method: "POST",
                 body: JSON.stringify(tasca),
                 headers: {
                     'Content-Type': 'application/json'
                 }
-            })  
-    }else{
+            })
+    } else {
         alert("Hi han dades sense definr")
     }
 
-	
+
 }
 
 
 
-function retorntasquesdb() {
+async function retorntasquesdb() {
     return fetch('http://localhost:3000/api/tasca')
         .then((res) => res.json());
 }
@@ -169,6 +167,26 @@ async function construirTasca() {
             ));
         });
         mostrar();
+    } catch (error) {
+        console.error(error);
+    }
+
+
+
+}
+
+ function retornidmaxtasca() {
+    return fetch('http://localhost:3000/api/idmaxtasca')
+        .then((res) => res.json());
+}
+
+async function idmaxtasques(){
+
+    const response = await retornidmaxtasca();
+
+    try {
+        let abc = response[0]._codi;
+       return abc + 1 ;
     } catch (error) {
         console.error(error);
     }

@@ -1,5 +1,5 @@
 /* Declaració de variables. */
-
+debugger
 var todo = [];
 var codi = [1];
 var idresponsable = [1];
@@ -63,8 +63,8 @@ class Task {
         return this._data_previsio_finalitzacio
     }
 
-
 }
+
 /* Crea una classe anomenada Responsable. */
 class Responsable {
 
@@ -88,13 +88,9 @@ class Responsable {
     }
 }
 
-
 /* Carregant l'emmagatzematge local. */
 construirTasca();
 construirResponsable()
-
-
-
 function Generarid() {
     codi[0] = codi[0] + 1;
 }
