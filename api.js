@@ -1,4 +1,5 @@
 const responsableModel = require("./models/responsable");
+const tascaModel = require("./models/tasques");
 const { response } = require('express');
 
 module.exports = (app) => {
@@ -37,22 +38,13 @@ module.exports = (app) => {
             res.status(500).send(error);
         }
     });
-}
 
 
 
 
-
-/**
- * Creando rutas para TASCA
- */
+    //Rutes de les tasques:
 
 
-const tascaModel = require("./models/tasques");
-
-
-module.exports = (app) => {
-    
     app.get('/api/tasca', async (req, res) => {
 
         const tasca = await tascaModel.find({});
@@ -88,4 +80,15 @@ module.exports = (app) => {
         }
     });
 }
+
+
+
+
+
+
+
+
+
+
+
     
