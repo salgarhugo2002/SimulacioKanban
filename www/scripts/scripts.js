@@ -309,6 +309,8 @@ papelera.addEventListener('drop', (e) => {
 
 })
 
+
+
 /*Codi per la modificacio automatica del camp min i value del calendari */
 document.getElementById('PrevFinalitzacio').value = new Date().toISOString().split('T')[0]
 document.getElementById('PrevFinalitzacio').min = new Date().toISOString().split('T')[0]

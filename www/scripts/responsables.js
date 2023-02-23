@@ -59,7 +59,7 @@ function eliminarResponsable() {
 function afegirUsuaris() {
 
     document.getElementById('resp').innerHTML = ""
-
+    document.getElementById('resp').innerHTML = ""
     responsables.forEach(element => {
 
         var responsables2 = document.getElementById('resp')
@@ -67,8 +67,21 @@ function afegirUsuaris() {
         var o = document.createElement("option")
         o.text = txt
         responsables2.add(o)
+ 
 
     })
+    responsables.forEach(element => {
+
+        var responsableseliminar = document.getElementById('borrarResp')
+        var txts = element.RetornNom()
+        var op = document.createElement("option")
+        op.text = txts
+
+        responsableseliminar.add(op)
+ 
+
+    })
+
 }
 
 function retornresponsabledb() {
@@ -111,4 +124,16 @@ async function idmaxresp() {
     } catch (error) {
         console.log("no hi ha cap responsable a la BDD, pero hem posat que la id default sigui 0 , aquest misatge salta igual pero funciona tot");
     }
+}
+
+function retornideresponsable(resp) {
+    let id = 0;
+    responsables.forEach(element => {
+        if (resp == element.RetornNom()) {
+            id = element.RetornId();
+        }
+
+    })
+    return id;
+
 }
