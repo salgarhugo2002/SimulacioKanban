@@ -90,7 +90,8 @@ class Responsable {
 
 
 /* Carregant l'emmagatzematge local. */
-carregarlocal();
+asd();
+dsa();
 
 
 

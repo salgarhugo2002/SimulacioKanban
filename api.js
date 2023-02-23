@@ -64,6 +64,17 @@ module.exports = (app) => {
        }
     });
 
+    app.get('/api/idmaxtasca', async (req, res) => {
+
+        const tasca = await tascaModel.find().select("_codi").sort({_codi: -1}).limit(1);
+
+       try {
+            res.status(200).send(tasca);
+       } catch (error) {
+            res.status(500).send(error);
+       }
+    });
+
 
     app.post('/api/tasca', async (req, res) => {
         const tasca = new tascaModel(req.body);
