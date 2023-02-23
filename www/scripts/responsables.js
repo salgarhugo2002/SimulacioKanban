@@ -1,19 +1,4 @@
 /*Funcio que agafa la informacio dels inputs crea i guarda un objecte de la classe responsable */
-/*function guardarresponsable() {
-    nom = document.getElementById('nomresponsable').value
-    GenerarIdResponsable();
-
-
-    let resp = new Responsable(idresponsable[0],nom)
-
-
-    responsables.push(resp);
-    document.getElementById('nomresponsable').value = ""
-    guardarlocal()
-    afegirUsuaris()
-}*/
-
-
 
 const BaseUrl = "http://localhost:3000/api/responsable";
 function afegirResponsable() {
@@ -67,7 +52,6 @@ function eliminarResponsable() {
         }
     })
     afegirUsuaris()
-    guardarlocal()
 }
 
 /*Funcio que a traves d'un nom et torna la id d'aquell responsable */

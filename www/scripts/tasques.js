@@ -96,7 +96,6 @@ function eliminarToDo(text = "") {
     });
 
     mostrar();
-    guardarlocal();
 }
 /* Pren les dades de la matriu 'todo', la variable codi , la matriu responsables i la variable de identificaciò i les desa a l'emmagatzematge en local. */
 
@@ -117,7 +116,6 @@ function CambiarLista(text = "", lista) {
         }
 
     });
-    guardarlocal();
 }
 
 
