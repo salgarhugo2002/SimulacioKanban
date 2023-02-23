@@ -56,6 +56,7 @@ module.exports = (app) => {
        }
     });
 
+    
     app.get('/api/idmaxtasca', async (req, res) => {
 
         const tasca = await tascaModel.find().select("_codi").sort({_codi: -1}).limit(1);

@@ -105,14 +105,14 @@ function retornresponsabledb() {
 
 
 
-async function dsa() {
+async function construirResponsable() {
     try {
         let response = await retornresponsabledb();
 
         response.forEach(element => {
             responsables.push(new Responsable(
-                element._id, 
-                element._nom))
+                element.id, 
+                element.nom))
         });
         mostrar();
         afegirUsuaris()

@@ -90,8 +90,8 @@ class Responsable {
 
 
 /* Carregant l'emmagatzematge local. */
-asd();
-dsa();
+construirTasca();
+construirResponsable()
 
 
 
