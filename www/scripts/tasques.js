@@ -1,3 +1,4 @@
+
 /* Agafa els valors dels inputs i crea una tasca nova, introduint-la a la matriu. */
 const BaseUrlTasca = "http://localhost:3000/api/tasca";
 function guardarToDo() {
@@ -29,20 +30,20 @@ function guardarToDo() {
                     let tasca = new Task(titol, dato, codi[0], data1, data, retornideresponsable(responsable), "ToDo", prio);
                     Generarid();
 
-                    
-    
+
+
                     let tasca1 = {
-                        "_titol" : titol,
-                        "_text" : dato,
-                        "_codi" : codi[0],
-                        "_data_creacio" : data1,
-                        "_data_previsio_finalitzacio" : data,
-                        "_responsable" : retornideresponsable(responsable),
-                        "_Lista" : "ToDo",
-                        "_prioridad" : prio
+                        "_titol": titol,
+                        "_text": dato,
+                        "_codi": codi[0],
+                        "_data_creacio": data1,
+                        "_data_previsio_finalitzacio": data,
+                        "_responsable": retornideresponsable(responsable),
+                        "_Lista": "ToDo",
+                        "_prioridad": prio
                     }
-                
-                    
+
+
                     todo.push(tasca);
 
 
@@ -58,7 +59,7 @@ function guardarToDo() {
     } catch (err) {
         alert(err);
     }
-    
+
 }
 
 /* Comprova si el títol de la tasca nova ja és a la llista de tasques. Retorna un valor booleà. */
@@ -123,19 +124,46 @@ function CambiarLista(text = "", lista) {
 
 
 function afegirTasca() {
-	
-	/*Obtenir dades del formulari*/
+
+    /*Obtenir dades del formulari*/
     const tasca = guardarToDo();
-   
-	fetch(BaseUrlTasca, 
-    {
-        method: "POST",
-        body: JSON.stringify(tasca),
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    })  
+
+    fetch(BaseUrlTasca,
+        {
+            method: "POST",
+            body: JSON.stringify(tasca),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
 }
 
 
 
+function retorntasquesdb() {
+    return fetch('http://localhost:3000/api/tasca')
+        .then((res) => res.json());
+}
+
+
+async function asd() {
+    try {
+        const response = await retorntasquesdb();
+
+        response.forEach(element => {
+            todo.push(new Task(
+                element._titol,
+                element._text,
+                element._codi,
+                element._data_creacio,
+                element._data_previsio_finalitzacio,
+                element._responsable,
+                element._Lista,
+                element._prioridad
+            ));
+        });
+        mostrar();
+    } catch (error) {
+        console.error(error);
+    }
+}
