@@ -29,6 +29,16 @@ function retornresponsabledb() {
         .then((res) => res.json());
 }
 
+ function borrarResponsable(id) {
+    fetch('http://localhost:3000/api/responsable/' + id,
+        {
+            method: "DELETE",
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+
+}
 
 
 //Tasques

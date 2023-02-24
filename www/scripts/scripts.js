@@ -92,7 +92,6 @@ class Responsable {
 construirTasca();
 construirResponsable()
 
-
 /* Crea un element de llista per a cada element de la matriu i l'afegeix a la llista adequada */
 
 function mostrar() {

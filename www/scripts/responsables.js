@@ -2,27 +2,27 @@
 
 
 
- async function ObtenirDadesFormResponsables() {
+async function ObtenirDadesFormResponsables() {
     let ida = await idmaxresp();
     let nomRes = document.getElementById('nomresponsable').value
     if (nomRes == "") {
         document.getElementById('nomresponsable').value = null
         alert("Omple les dades")
-    }else{
+    } else {
         document.getElementById('nomresponsable').value = null
         let responsable = {
             "id": ida,
             "nom": nomRes
         }
-    
-        
+
+
         let resp = new Responsable(ida, nomRes)
-    
+
         responsables.push(resp);
-    
+
         afegirUsuaris()
         return responsable
-    
+
     }
 
 
@@ -30,10 +30,12 @@
 
 
 /* /*Funcio que agafa la informacio dels inputs elimina un objecte de la classe responsable */
-function eliminarResponsable() {
+async function eliminarResponsable() {
+    let id = retornideresponsable(document.getElementById('borrarResp').value);
+    await borrarResponsable(id)
     let cont = 0
     responsables.forEach(element => {
-        if (element.RetornId() == parseInt(document.getElementById('borrarResp').value)) {
+        if (element.RetornId() == id) {
             responsables.splice(cont, 1);
 
         } else {
@@ -48,7 +50,7 @@ function eliminarResponsable() {
 function afegirUsuaris() {
 
     document.getElementById('resp').innerHTML = ""
-    document.getElementById('resp').innerHTML = ""
+    document.getElementById('borrarResp').innerHTML = ""
     responsables.forEach(element => {
 
         var responsables2 = document.getElementById('resp')
@@ -56,7 +58,7 @@ function afegirUsuaris() {
         var o = document.createElement("option")
         o.text = txt
         responsables2.add(o)
- 
+
 
     })
     responsables.forEach(element => {
@@ -67,7 +69,7 @@ function afegirUsuaris() {
         op.text = txts
 
         responsableseliminar.add(op)
- 
+
 
     })
 
