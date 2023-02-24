@@ -1,6 +1,8 @@
 
 //Responsables
 
+
+
 async function afegirResponsable() {
 
     /*Obtenir dades del formulari*/
@@ -79,6 +81,46 @@ function borrarTasca(id) {
     fetch('http://localhost:3000/api/tasca/'+id,
         {
             method: "DELETE",
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+
+}
+
+
+function modificarLista(id,list) {
+
+    let tasca1 = {
+        "_titol": "",
+        "_text": "",
+        "_codi": "" ,
+        "_data_creacio": "",
+        "_data_previsio_finalitzacio": "",
+        "_responsable": "",
+        "_Lista": "",
+        "_prioridad": ""
+    }
+    todo.forEach(element => {
+        if (id == element.Retorncodi()) {
+            tasca1 = {
+                "_titol": element.RetornTitol(),
+                "_text": element.RetornText(),
+                "_codi": element.Retorncodi() ,
+                "_data_creacio": element.RetornDataCreacio(),
+                "_data_previsio_finalitzacio": element.ReturnDataFinal(),
+                "_responsable": element.RetornResponsable(),
+                "_Lista": list,
+                "_prioridad": element.Prio()
+            }
+        }
+    });
+    
+    
+    fetch('http://localhost:3000/api/tasca/'+id,
+        {
+            method: "PUT",
+            body: JSON.stringify(tasca1),
             headers: {
                 'Content-Type': 'application/json'
             }

@@ -102,7 +102,18 @@ module.exports = (app) => {
     });
 
 
-    
+    app.put('/api/tasca/:_codi', async (req, res) => {
+
+       
+        try {
+            const {_codi} = req.params;
+            await tascaModel.updateOne({ _codi },req.body)
+            const tasc = await tascaModel.find({});   
+            res.status(200).send(tasc);
+        } catch (error) {
+            res.status(500).send(error);
+        }
+    });
 
     
     

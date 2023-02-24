@@ -121,14 +121,16 @@ function returnIdTitol(txt){
 
 /* Funcio per cambiar l'atribut llista de la classe responsable depenguen d'on es mogui el element */
 
-function CambiarLista(text = "", lista) {
+async function CambiarLista(text = "", lista) {
     let pos = text.indexOf('.')
 
     let text2 = text.substring(0, pos)
+    let id =returnIdTitol(text2)
     text = text.trim()
-
+    
+    await modificarLista(id,lista)
     todo.forEach(element => {
-        if (text2 == element.RetornTitol()) {
+        if (id == element.Retorncodi()) {
 
             element.setLista(lista);
 

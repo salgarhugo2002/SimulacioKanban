@@ -24,6 +24,10 @@ class Task {
         return this._titol
     }
 
+    RetornDataCreacio(){
+        return this._data_creacio
+    }
+
     Retorncodi() {
         return this._codi;
     }
