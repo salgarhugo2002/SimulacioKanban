@@ -1,6 +1,5 @@
 
 /* Agafa els valors dels inputs i crea una tasca nova, introduint-la a la matriu. */
-const BaseUrlTasca = "http://localhost:3000/api/tasca";
 async function guardarToDo() {
     /* Try-catch que detecta si algun titol esta repetit o i ha algun camp buit. */
 
@@ -117,10 +116,6 @@ function CambiarLista(text = "", lista) {
 
     });
 }
-
-
-
-
 
 
 

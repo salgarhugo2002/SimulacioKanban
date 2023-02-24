@@ -2,8 +2,8 @@
 
 
 
-async function ObtenirDadesFormResponsables() {
-    let myForm = document.getElementById("formResponsables");
+ async function ObtenirDadesFormResponsables() {
+    let ida = await idmaxresp();
     let nomRes = document.getElementById('nomresponsable').value
     if (nomRes == "") {
         document.getElementById('nomresponsable').value = null
@@ -11,12 +11,12 @@ async function ObtenirDadesFormResponsables() {
     }else{
         document.getElementById('nomresponsable').value = null
         let responsable = {
-            "id": idresponsable[0],
-            "nom": myForm.nom.value
+            "id": ida,
+            "nom": nomRes
         }
     
-        GenerarIdResponsable()
-        let resp = new Responsable(idresponsable[0], myForm.nom.value)
+        
+        let resp = new Responsable(ida, nomRes)
     
         responsables.push(resp);
     

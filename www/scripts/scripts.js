@@ -1,5 +1,5 @@
 /* Declaració de variables. */
-
+debugger
 var todo = [];
 var codi = [1];
 var idresponsable = [1];
@@ -91,14 +91,7 @@ class Responsable {
 /* Carregant l'emmagatzematge local. */
 construirTasca();
 construirResponsable()
-function Generarid() {
-    codi[0] = codi[0] + 1;
-}
-/* Generar un nou ID per a la persona responsable. */
 
-function GenerarIdResponsable() {
-    idresponsable[0] = idresponsable[0] + 1;
-}
 
 /* Crea un element de llista per a cada element de la matriu i l'afegeix a la llista adequada */
 

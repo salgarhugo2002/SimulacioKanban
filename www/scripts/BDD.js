@@ -6,7 +6,7 @@ async function afegirResponsable() {
     /*Obtenir dades del formulari*/
     const responsable = await ObtenirDadesFormResponsables();
 
-    fetch(BaseUrl,
+    fetch('http://localhost:3000/api/responsable',
         {
             method: "POST",
             body: JSON.stringify(responsable),
@@ -40,7 +40,7 @@ async function afegirTasca() {
     const tasca = await guardarToDo();
 
     if (tasca != undefined) {
-        fetch(BaseUrlTasca,
+        fetch('http://localhost:3000/api/tasca',
             {
                 method: "POST",
                 body: JSON.stringify(tasca),
