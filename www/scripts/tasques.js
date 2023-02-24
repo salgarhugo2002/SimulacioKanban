@@ -119,31 +119,9 @@ function CambiarLista(text = "", lista) {
 }
 
 
-async function afegirTasca() {
-
-    /*Obtenir dades del formulari*/
-    const tasca = await guardarToDo();
-
-    if (tasca != undefined) {
-        fetch(BaseUrlTasca,
-            {
-                method: "POST",
-                body: JSON.stringify(tasca),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-    } else {
-        alert("Hi han dades sense definr")
-    }
 
 
-}
 
-async function retorntasquesdb() {
-    return fetch('http://localhost:3000/api/tasca')
-        .then((res) => res.json());
-}
 
 
 async function construirTasca() {
@@ -171,10 +149,6 @@ async function construirTasca() {
 
 }
 
- function retornidmaxtasca() {
-    return fetch('http://localhost:3000/api/idmaxtasca')
-        .then((res) => res.json());
-}
 
 async function idmaxtasques(){
 

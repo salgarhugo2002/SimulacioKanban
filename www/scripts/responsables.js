@@ -1,23 +1,5 @@
 /*Funcio que agafa la informacio dels inputs crea i guarda un objecte de la classe responsable */
 
-const BaseUrl = "http://localhost:3000/api/responsable";
-async function afegirResponsable() {
-
-    /*Obtenir dades del formulari*/
-    const responsable = await ObtenirDadesFormResponsables();
-
-    fetch(BaseUrl,
-        {
-            method: "POST",
-            body: JSON.stringify(responsable),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-
-
-
-}
 
 
 async function ObtenirDadesFormResponsables() {
@@ -91,10 +73,6 @@ function afegirUsuaris() {
 
 }
 
-function retornresponsabledb() {
-    return fetch('http://localhost:3000/api/responsable')
-        .then((res) => res.json());
-}
 
 
 
@@ -115,10 +93,7 @@ async function construirResponsable() {
 }
 
 
-function retornidmaxresp() {
-    return fetch('http://localhost:3000/api/idmax')
-        .then((res) => res.json());
-}
+
 
 async function idmaxresp() {
 
