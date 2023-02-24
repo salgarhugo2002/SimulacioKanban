@@ -39,7 +39,16 @@ module.exports = (app) => {
         }
     });
 
+    app.delete('/api/responsable/:id', async (req, res) => {
 
+        const responsable = await responsableModel.deleteOne({ id: req.params.id });
+        try {
+            const resp = await responsableModel.find({});   // Demano la colecció actualitzada per retornar-la.
+            res.status(200).send(resp);
+        } catch (error) {
+            res.status(500).send(error);
+        }
+    });
 
 
     //Rutes de les tasques:
@@ -80,6 +89,7 @@ module.exports = (app) => {
             res.status(500).send(error);
         }
     });
+
     app.delete('/api/tasca/:_codi', async (req, res) => {
 
         const tasca = await tascaModel.deleteOne({ _codi: req.params._codi });
@@ -90,6 +100,8 @@ module.exports = (app) => {
             res.status(500).send(error);
         }
     });
+
+    
     
 }
 
