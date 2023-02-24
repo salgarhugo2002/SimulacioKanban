@@ -116,6 +116,16 @@ module.exports = (app) => {
     });
 
     
+    app.get('/api/tascar/:codi', async (req, res) => {
+        const {codi} =parseInt(req.params) ;
+        const tasca = await tascaModel.findOne({_codi: codi})
+
+        try {
+            res.status(200).send(tasca);
+        } catch (error) {
+            res.status(500).send(error);
+        }
+    });
     
 }
 
