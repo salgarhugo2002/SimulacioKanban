@@ -231,39 +231,55 @@ dragDone.addEventListener('dragover', (e) => {
 
 
 dragDoing.addEventListener('drop', (e) => {
-    e.preventDefault()
-    const element = document.getElementById(e.dataTransfer.getData('text'))
-    element.classList.remove('active')
-    listaDoing.appendChild(listaToDo.removeChild(element))
+    try {
+        e.preventDefault()
+        const element = document.getElementById(e.dataTransfer.getData('text'))
+        element.classList.remove('active')
+        listaDoing.appendChild(listaToDo.removeChild(element))
+    
+        a = element.innerHTML;
+        CambiarLista(a, "Doing")
+    } catch (error) {
+        
+    }
 
-    a = element.innerHTML;
-    CambiarLista(a, "Doing")
 
 })
 
 dragToDo.addEventListener('drop', (e) => {
-    e.preventDefault()
-    const element = document.getElementById(e.dataTransfer.getData('text'))
-    element.classList.remove('active')
-    listaToDo.appendChild(listaDoing.removeChild(element))
+    try {
+        e.preventDefault()
+        const element = document.getElementById(e.dataTransfer.getData('text'))
+        element.classList.remove('active')
+        listaToDo.appendChild(listaDoing.removeChild(element))
+    
+        a = element.innerHTML;
+        CambiarLista(a, "ToDo")
+    } catch (error) {
+        
+    }
 
-    a = element.innerHTML;
-    CambiarLista(a, "ToDo")
 
 })
 
 dragDone.addEventListener('drop', (e) => {
-    e.preventDefault()
-    const element = document.getElementById(e.dataTransfer.getData('text'))
-    element.classList.remove('active')
-    listaDone.appendChild(listaDoing.removeChild(element))
+    try {
+        e.preventDefault()
+        const element = document.getElementById(e.dataTransfer.getData('text'))
+        element.classList.remove('active')
+        listaDone.appendChild(listaDoing.removeChild(element))
+    
+        a = element.innerHTML;
+        CambiarLista(a, "Done")
+    } catch (error) {
+        
+    }
 
-    a = element.innerHTML;
-    CambiarLista(a, "Done")
 
 })
 
 dragDoing.addEventListener('drop', (e) => {
+try {
     e.preventDefault()
     const element = document.getElementById(e.dataTransfer.getData('text'))
     element.classList.remove('active')
@@ -272,6 +288,9 @@ dragDoing.addEventListener('drop', (e) => {
 
     a = element.innerHTML;
     CambiarLista(a, "Doing")
+} catch (error) {
+    
+}
 
 })
 
