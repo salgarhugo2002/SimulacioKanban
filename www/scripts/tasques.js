@@ -78,10 +78,16 @@ function validarTitol() {
     return bool;
 }
 
-function eliminarToDo(text = "") {
+
+
+async function eliminarToDo(text = "") {
+    
+    
     let cont = 0;
     let pos = text.indexOf('.')
     let text2 = text.substring(0, pos)
+    let id = returnIdTitol(text2)
+    await borrarTasca(id)
     todo.forEach(element => {
         if (text2.trim() == element.RetornTitol()) {
 
@@ -95,6 +101,17 @@ function eliminarToDo(text = "") {
     });
 
     mostrar();
+}
+
+function returnIdTitol(txt){
+    let id = 0;
+    todo.forEach(element => {
+        if (txt == element.RetornTitol()) {
+            id = element.Retorncodi()
+        }
+
+    })
+    return id;
 }
 /* Pren les dades de la matriu 'todo', la variable codi , la matriu responsables i la variable de identificaciò i les desa a l'emmagatzematge en local. */
 
@@ -156,3 +173,6 @@ async function idmaxtasques(){
         console.error(error);
     }
 }
+
+
+

@@ -73,3 +73,15 @@ function retornidmaxtasca() {
     return fetch('http://localhost:3000/api/idmaxtasca')
         .then((res) => res.json());
 }
+
+
+function borrarTasca(id) {
+    fetch('http://localhost:3000/api/tasca/'+id,
+        {
+            method: "DELETE",
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+
+}
