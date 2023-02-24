@@ -8,7 +8,8 @@ const TascaSchema = new mongoose.Schema({
         type:String
     },
     _codi: {
-        type: Number
+        type: Number,
+        default: 0
     },
     _data_creacio:{
         type: String

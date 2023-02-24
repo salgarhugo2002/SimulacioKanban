@@ -12,6 +12,9 @@ async function guardarToDo() {
         let prio = document.getElementById('pri').value
         let codiiii = await idmaxtasques();
 
+        if (codiiii== undefined) {
+            codiiii = 0;
+        }
 
         if (!validarTitol()) {
             throw "No pots repetir titol";
@@ -170,7 +173,8 @@ async function idmaxtasques(){
         let abc = response[0]._codi;
        return abc + 1 ;
     } catch (error) {
-        console.error(error);
+        console.log("no hi ha cap tasca a la BDD, pero hem posat que la id default sigui 0 , aquest misatge salta igual pero funciona tot");
+
     }
 }
 

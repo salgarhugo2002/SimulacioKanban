@@ -1,5 +1,5 @@
 /* Declaració de variables. */
-debugger
+
 var todo = [];
 var codi = [1];
 var idresponsable = [1];
