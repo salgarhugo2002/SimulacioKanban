@@ -140,8 +140,6 @@ async function afegirTasca() {
 
 }
 
-
-
 async function retorntasquesdb() {
     return fetch('http://localhost:3000/api/tasca')
         .then((res) => res.json());

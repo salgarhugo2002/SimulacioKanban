@@ -22,19 +22,26 @@ async function afegirResponsable() {
 
 async function ObtenirDadesFormResponsables() {
     let myForm = document.getElementById("formResponsables");
-    let codi = await idmaxresp();
-    let responsable = {
-        "id": codi,
-        "nom": myForm.nom.value
+    let nomRes = document.getElementById('nomresponsable').value
+    if (nomRes == "") {
+        document.getElementById('nomresponsable').value = null
+        alert("Omple les dades")
+    }else{
+        document.getElementById('nomresponsable').value = null
+        let responsable = {
+            "id": idresponsable[0],
+            "nom": myForm.nom.value
+        }
+    
+        GenerarIdResponsable()
+        let resp = new Responsable(idresponsable[0], myForm.nom.value)
+    
+        responsables.push(resp);
+    
+        afegirUsuaris()
+        return responsable
+    
     }
-
-    GenerarIdResponsable()
-    let resp = new Responsable(codi, myForm.nom.value)
-
-    responsables.push(resp);
-
-    afegirUsuaris()
-    return responsable
 
 
 }
