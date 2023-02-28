@@ -126,8 +126,53 @@
         </div>
       </div>
       <div class="grid text-center">
-        <div class="g-col-4">
 
+        <div class="g-col-4">
+          <div class="modal fade" id="exampleModal4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header text-bg-primary">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">Modifica la teva tasca</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" style="background-color: rgb(252, 252, 241);">
+                  <form>
+                    <label for="recipient-name" class="col-form-label" style="font-size: 20px;">Responsable</label>
+                    <div class="form-floating">
+                      <select class="form-select" id="modresp" aria-label="Disabled select example"
+                        style="background-color: beige;">
+                      </select>
+                      <label for="resp">Escull un responsable</label>
+                    </div>
+                    <label for="message-text" class="col-form-label" style="font-size: 20px;">Titol</label>
+                    <input type="text" class="form-control" id="modtitol" style="background-color: beige;"></input>
+                    <input type="number" hidden id="modid">
+                    <div class="mb-3">
+                      <label for="message-text" class="col-form-label" style="font-size: 20px;">Tasca</label>
+                      <textarea class="form-control" id="modtext1" style="background-color: beige;"></textarea>
+                      <label for="message-text" class="col-form-label" style="font-size: 20px;">Prioritat</label>
+                      <br>
+                      <select name="pri" id="modpri">
+                        <option value="Alta">Alta</option>
+                        <option value="Normal">Normal</option>
+                        <option value="Baixa">Baixa</option>
+                      </select>
+    
+                      <br>
+                      <input type="date" id="modPrevFinalitzacio" name="trip-start"
+                        style="border:0px; background-color: rgb(252, 252, 241); outline: none;">
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer d-flex justify-content-center" style="background-color: rgb(252, 252, 241);">
+                  <button type="button" class="btn btn-outline-primary" style="width: 100px;" id="btng"
+                    onclick="modificarTasca()">
+                    Modifica
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog">
@@ -226,6 +271,8 @@
       </div>
     </div>
   </div>
+
+  
 
 
   <script src="./scripts/BDD.js"></script>

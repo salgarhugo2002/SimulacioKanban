@@ -103,8 +103,6 @@ module.exports = (app) => {
 
 
     app.put('/api/tasca/:_codi', async (req, res) => {
-
-       
         try {
             const {_codi} = req.params;
             await tascaModel.updateOne({ _codi },req.body)
@@ -114,6 +112,7 @@ module.exports = (app) => {
             res.status(500).send(error);
         }
     });
+
 
     
     app.get('/api/tascar/:codi', async (req, res) => {

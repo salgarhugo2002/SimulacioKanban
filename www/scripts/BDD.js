@@ -127,3 +127,49 @@ function modificarLista(id,list) {
         })
 
 }
+
+
+function modificarTascaDB(responsable) {
+
+    let titol = document.getElementById("modtitol").value;
+    let dato = document.getElementById("modtext1").value;
+    let data = new Date(document.getElementById("modPrevFinalitzacio").value).toLocaleDateString();
+    let prio = document.getElementById('pri').value
+    let iid =parseInt(document.getElementById('modid').value)
+    
+    let tasca1 = {
+        "_titol": "",
+        "_text": "",
+        "_codi": "" ,
+        "_data_creacio": "",
+        "_data_previsio_finalitzacio": "",
+        "_responsable": "",
+        "_Lista": "",
+        "_prioridad": ""
+    }
+    todo.forEach(element => {
+        if (iid == element.Retorncodi()) {
+            tasca1 = {
+                "_titol": titol,
+                "_text": dato,
+                "_codi": iid ,
+                "_data_creacio": element.RetornDataCreacio(),
+                "_data_previsio_finalitzacio": data,
+                "_responsable": responsable,
+                "_Lista": element.RetornLista(),
+                "_prioridad": prio
+            }
+        }
+    });
+    
+    console.log(tasca1)
+    fetch('http://localhost:3000/api/tasca/'+iid,
+        {
+            method: "PUT",
+            body: JSON.stringify(tasca1),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+
+}

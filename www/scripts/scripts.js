@@ -24,8 +24,15 @@ class Task {
         return this._titol
     }
 
+     modTitol(x){
+        this._titol = x
+    }
+
     RetornDataCreacio(){
         return this._data_creacio
+    }
+     dataCreacio(x){
+        this._data_creacio = x
     }
 
     Retorncodi() {
@@ -52,6 +59,10 @@ class Task {
         return this._responsable;
     }
 
+     modResponsable(x){
+        this._responsable = x
+    }
+
     RetornLista() {
         return this._Lista;
     }
@@ -63,8 +74,16 @@ class Task {
         return this._prioridad
     }
 
+     modPrio(x){
+        this._prioridad = x
+    }
+
     ReturnDataFinal(){
         return this._data_previsio_finalitzacio
+    }
+
+     modDataFinal(x){
+        this._data_previsio_finalitzacio =x
     }
 
 }
@@ -104,12 +123,49 @@ function mostrar() {
     document.getElementById('listaDoing').innerHTML = '';
     document.getElementById('listaDone').innerHTML = '';
     let cont = 1
+    let boto;
 
     todo.forEach(element => {
         node = document.createElement('li');
+        boto = document.createElement('button')
+        boto.innerHTML = "Modificar"
+        boto.setAttribute('data-bs-target','#exampleModal4');
+        boto.setAttribute("data-bs-toggle","modal")
+       
         node.draggable = true
         node.className = "task"
         node.id = cont
+        boto.addEventListener('click',()=>{
+            document.getElementById('modid').value = element.Retorncodi()
+            document.getElementById('modtext1').value = element.RetornText()
+            document.getElementById('modtitol').value = element.RetornTitol()
+            document.getElementById('modpri').value = element.Prio()
+            let calendar = element.ReturnDataFinal().replaceAll("/","-")
+            
+            console.log(typeof calendar)
+            document.getElementById('modPrevFinalitzacio').value = new Date().toISOString().split('T')[0]
+            console.log( document.getElementById('modPrevFinalitzacio').value)
+            document.getElementById('modPrevFinalitzacio').min = new Date().toISOString().split('T')[0]
+
+
+            document.getElementById('modresp').innerHTML = ""
+            
+            responsables.forEach(elements => {
+        
+                var responsables2 = document.getElementById('modresp')
+                var txt = elements.RetornNom()
+                var o = document.createElement("option")
+                o.text = txt
+                if (element.RetornResponsable() == elements.RetornId()) {
+                    o.defaultSelected = elements.RetornNom()
+                }
+                
+                responsables2.add(o)
+        
+        
+            })
+        })
+        
         if (element.Prio() == "Alta") {
             node.style.backgroundColor = "red"
         } else if (element.Prio() == "Normal") {
@@ -126,6 +182,7 @@ function mostrar() {
         node.appendChild(document.createElement('br'))
         node.appendChild(document.createTextNode(" ID: "  + element.Retorncodi()));
         node.appendChild(document.createElement('br'))
+        
         responsables.forEach(e =>{
             
             if (element.RetornResponsable()  == e.RetornId() ) {
@@ -138,6 +195,7 @@ function mostrar() {
         })
         node.appendChild(document.createElement('br'))
         node.appendChild(document.createTextNode("Data Final: " + element.ReturnDataFinal() + " "));
+        node.appendChild(boto)
 
         if (element.RetornLista() == "ToDo") {
             document.querySelector('#listaToDo').appendChild(node);

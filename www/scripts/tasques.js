@@ -7,7 +7,7 @@ async function guardarToDo() {
         let responsable = document.getElementById('resp').value
         let titol = document.getElementById("titol1").value;
         let dato = document.getElementById("text1").value;
-        let data = new Date(document.getElementById("PrevFinalitzacio").value).toLocaleDateString();
+        let data = new Date(document.getElementById("PrevFinalitzacio").value).toLocaleDateString()
         let data1 = new Date().toLocaleDateString();
         let prio = document.getElementById('pri').value
         let codiiii = await idmaxtasques();
@@ -180,5 +180,27 @@ async function idmaxtasques(){
     }
 }
 
+
+async function modificarTasca(){
+    let responsable =retornideresponsable(document.getElementById('modresp').value)
+    let titol = document.getElementById("modtitol").value;
+    let dato = document.getElementById("modtext1").value;
+    let data = new Date(document.getElementById("modPrevFinalitzacio").value).toLocaleDateString();
+    let prio = document.getElementById('pri').value
+    let iid = document.getElementById('modid').value
+    todo.forEach(element => {
+        if (iid == element.Retorncodi()) {
+            element.modTitol(titol)
+            element.RetornText(dato)
+            element.modPrio(prio)
+            element.modDataFinal(data)
+            element.modResponsable(responsable)
+        }
+    });
+    
+   await modificarTascaDB(responsable)
+   mostrar()
+   
+}
 
 
