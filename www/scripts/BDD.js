@@ -162,7 +162,7 @@ function modificarTascaDB(responsable) {
         }
     });
     
-    console.log(tasca1)
+    
     fetch('http://localhost:3000/api/tasca/'+iid,
         {
             method: "PUT",

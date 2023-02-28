@@ -186,12 +186,12 @@ async function modificarTasca(){
     let titol = document.getElementById("modtitol").value;
     let dato = document.getElementById("modtext1").value;
     let data = new Date(document.getElementById("modPrevFinalitzacio").value).toLocaleDateString();
-    let prio = document.getElementById('pri').value
+    let prio = document.getElementById('modpri').value
     let iid = document.getElementById('modid').value
     todo.forEach(element => {
         if (iid == element.Retorncodi()) {
             element.modTitol(titol)
-            element.RetornText(dato)
+            element.modText(dato)
             element.modPrio(prio)
             element.modDataFinal(data)
             element.modResponsable(responsable)

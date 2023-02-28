@@ -45,6 +45,9 @@ class Task {
     set Text(text) {
         this.text = text;
     }
+    modText(x){
+        this._text = x
+    }
 
     getTask() {
         return this;
