@@ -129,14 +129,14 @@ function mostrar() {
     let boto;
 
     todo.forEach(element => {
-        node = document.createElement('li');
+        node = document.createElement('div');
         boto = document.createElement('button')
         boto.innerHTML = "Modificar"
         boto.setAttribute('data-bs-target','#exampleModal4');
         boto.setAttribute("data-bs-toggle","modal")
-       
+        
         node.draggable = true
-        node.className = "task"
+        node.className = "task card text-center"
         node.id = cont
         boto.addEventListener('click',()=>{
             document.getElementById('modid').value = element.Retorncodi()
@@ -170,20 +170,23 @@ function mostrar() {
         })
         
         if (element.Prio() == "Alta") {
-            node.style.backgroundColor = "red"
+            node.style.backgroundColor = "#FF4F29"
+            boto.className = "btn btn-success"
         } else if (element.Prio() == "Normal") {
-            node.style.backgroundColor = "cyan"
+            node.style.backgroundColor = "#CADCD3"
+            boto.className = "btn btn-danger"
         }
         else if (element.Prio() == "Baixa") {
-            node.style.backgroundColor = "lightgreen"
+            node.style.backgroundColor = "#82F8E1"
+            boto.className = "btn btn-warning"
         }
         cont++;
-
-        node.appendChild(document.createTextNode(element.RetornTitol() + "." ));
+        
+        node.appendChild(document.createTextNode( element.RetornTitol() + "." ));
         node.appendChild(document.createElement('br'))
         node.appendChild(document.createTextNode("Tasca: " + element.RetornText()));
-        node.appendChild(document.createElement('br'))
-        node.appendChild(document.createTextNode(" ID: "  + element.Retorncodi()));
+        
+        
         node.appendChild(document.createElement('br'))
         
         responsables.forEach(e =>{
@@ -192,12 +195,13 @@ function mostrar() {
                 
                 node.appendChild(document.createTextNode(" Responsable: "  + e.RetornNom()));
                 node.appendChild(document.createElement('br'))
-                node.appendChild(document.createTextNode("Responsable id: "  + e.RetornId()));
+                
             }
 
         })
-        node.appendChild(document.createElement('br'))
+        
         node.appendChild(document.createTextNode("Data Final: " + element.ReturnDataFinal() + " "));
+        
         node.appendChild(boto)
 
         if (element.RetornLista() == "ToDo") {
@@ -209,9 +213,9 @@ function mostrar() {
             document.querySelector('#listaDone').appendChild(node);
         }
 
-
+        
     });
-
+    
 }
 
 
